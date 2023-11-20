@@ -52,7 +52,9 @@ table {
     width: 50%;
 
 }
-
+textarea:hover {
+    background-color: grey;
+}
 td {
     font-size: 1.5vw;
     padding: 8px;
