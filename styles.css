@@ -6,7 +6,9 @@
 }
 .dropdown-survey:hover{
     background-color: grey;
-
+}
+img{
+    width: 25%;
 }
 input[type=submit] {
     background-color: rebeccapurple;
