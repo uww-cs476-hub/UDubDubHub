@@ -12,7 +12,7 @@
 <h3>The U-Dub-Dub-Hub requires you to complete this simple survey. This allows us to get more information on you as a student so that we can give you the best experience within the hub.</h3>
     <h4>Already a user? Login here</h4><!--link to login page-->
 </div>
-    <form action="" method="post">
+    <form action="index.php?mode=addNewUser" method="post">
     <table class="table">
         <tr>
             <!--this may need to become a variable in php that can be used for the home page to say "Welcome... $Name"-->
@@ -46,7 +46,7 @@
             <td>Major:</td>
         </tr>
         <tr>
-            <td> <select name="status" class="dropdown-survey" required>
+            <td> <select name="standing" class="dropdown-survey" required>
                 <option value="" disabled selected></option>
             </select></td>
         </tr>
@@ -72,7 +72,7 @@
             <td>Create a Username (Enter your Net Id):</td>
         </tr>
         <tr>
-            <td><input type='text' id="email" name="email" required /></td>
+            <td><input type='text' id="netID" name="netID" required /></td>
         </tr>
         <tr> <td>Create a Password:</td>
         </tr>
