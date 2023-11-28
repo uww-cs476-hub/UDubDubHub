@@ -1,24 +1,16 @@
 <?php
-include('db_conn.php');
+include "header.html";
+?>
+<h2>Login</h2>
+<form action="index.php?mode=login" method="post">
+    <label for="netID">NetID:</label>
+    <input type="text" name="netID" required><br>
 
-// Process login
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
 
-    // Validate user
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-        // Login successful
-        $_SESSION["username"] = $username;
-        header("Location: welcome.php");
-    } else {
-        // Login failed
-        echo "Invalid username or password";
-    }
-}
-
-$conn->close();
+    <input type="submit" value="Login">
+</form>
+<?php
+include "footer.html";
 ?>

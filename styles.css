@@ -20,7 +20,7 @@ input[type=submit] {
 input:hover {
     background-color: grey;
 }
-input[type=text] {
+input[type=text], input[type=password] {
     width: 100%;
     padding: 20px 20px;
     margin: 8px 0;

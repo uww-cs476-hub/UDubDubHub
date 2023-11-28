@@ -1,14 +1,15 @@
 <?php
-session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user_authentication";
+$user = 'root';
+$pass = ''; 
+$dsn='mysql:host=localhost; dbname=udubdubhub';
+try {
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    $db = new PDO($dsn, $user, $pass);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+} catch (PDOException $e) {
+    echo "Error!: " . $e->getMessage() . "<br>";
+    die();
 }
+
 ?>
