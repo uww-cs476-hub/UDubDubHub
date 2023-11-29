@@ -35,15 +35,14 @@
 
             if (isset($result['netID'])) {
                 $_SESSION['netID'] = $netID;
-
-                header("Location: index.php?mode=home");
-            }
-            else {
+                header("Location: welcome.php");
+            } else {
+                $_SESSION['login_error'] = "Incorrect username or password";
                 header("Location: login.php");
             }
 
             break;
-        
+
         case "home":
             include "welcome.php";
 
@@ -69,7 +68,8 @@
             $resultSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($resultSet) > 0) {
-                echo "Username unavailable";
+                $_SESSION['username_error'] = "Username unavailable";
+                header("Location: initialsurvey.php");
             }
             else {
                 $sql = "INSERT INTO user (netID, firstName, lastName, password, standing, enrollmentType, email)

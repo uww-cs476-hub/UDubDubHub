@@ -1,10 +1,16 @@
 <?php
+session_start();
 include "header.html";
 include "db_conn.php";
 
 if (!$db) {
     echo "Could not connect to database!";
     exit();
+}
+
+if (isset($_SESSION['username_error'])) {
+    echo '<div style="color: red;">' . $_SESSION['username_error'] . '</div>';
+    unset($_SESSION['username_error']);
 }
 ?>
 <div class="styled-container"><!--ww images from dr zach oster imported in here-->
