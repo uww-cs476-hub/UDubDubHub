@@ -44,7 +44,7 @@
             break;
 
         case "home":
-            include "welcome.php";
+            header("Location: welcome.php");
 
             break;
 
@@ -123,7 +123,7 @@
             break;
 
         default:
-            include "initialSurvey.php";
+            header("Location: initialSurvey.php");
 
             break;
     }
