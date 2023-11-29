@@ -7,11 +7,6 @@ if (!$db) {
     echo "Could not connect to database!";
     exit();
 }
-
-if (isset($_SESSION['username_error'])) {
-    echo '<div style="color: red;">' . $_SESSION['username_error'] . '</div>';
-    unset($_SESSION['username_error']);
-}
 ?>
 <div class="styled-container"><!--ww images from dr zach oster imported in here-->
 <img src="UW-Whitewater_logo_blk_lead_hortizontal.png" width="1122">
@@ -19,6 +14,12 @@ if (isset($_SESSION['username_error'])) {
 <h3>The U-Dub-Dub-Hub requires you to complete this simple survey. This allows us to get more information on you as a student so that we can give you the best experience within the hub.</h3>
     <h4>Already a user? Login <a href="login.php">here</a></h4><!--link to login page-->
 </div>
+<?php
+    if (isset($_SESSION['username_error'])) {
+        echo '<div style="text-align: center; color: red;"><p>' . $_SESSION['username_error'] . '</p></div>';
+        unset($_SESSION['username_error']);
+    }
+?>
     <form action="index.php?mode=addNewUser" method="post">
     <table class="table">
         <tr>

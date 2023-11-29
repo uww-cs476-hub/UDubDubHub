@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 .dropdown-survey:hover{
-    background-color: grey;
+    background-color: lightgrey;
 
 }
 input[type=submit] {
@@ -18,7 +18,7 @@ input[type=submit] {
     padding: 1%;
 }
 input:hover {
-    background-color: grey;
+    background-color: lightgrey;
 }
 input[type=text], input[type=password] {
     width: 100%;

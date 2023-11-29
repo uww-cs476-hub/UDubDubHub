@@ -37,7 +37,7 @@
                 $_SESSION['netID'] = $netID;
                 header("Location: welcome.php");
             } else {
-                $_SESSION['login_error'] = "Incorrect username or password";
+                $_SESSION['login_error'] = "Incorrect username or password!";
                 header("Location: login.php");
             }
 
@@ -68,7 +68,7 @@
             $resultSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($resultSet) > 0) {
-                $_SESSION['username_error'] = "Username unavailable";
+                $_SESSION['username_error'] = "Username unavailable!";
                 header("Location: initialsurvey.php");
             }
             else {

@@ -1,13 +1,14 @@
 <?php
 session_start();
 include "header.html";
-
+?>
+<h2>Login</h2>
+<?php
 if (isset($_SESSION['login_error'])) {
-    echo '<div style="color: red;">' . $_SESSION['login_error'] . '</div>';
+    echo '<div style="color: red;"><p>' . $_SESSION['login_error'] . '</p></div>';
     unset($_SESSION['login_error']);
 }
 ?>
-<h2>Login</h2>
 <form action="index.php?mode=login" method="post">
     <label for="netID">NetID:</label>
     <input type="text" name="netID" required><br>
@@ -15,7 +16,7 @@ if (isset($_SESSION['login_error'])) {
     <label for="password">Password:</label>
     <input type="password" name="password" required><br>
 
-    <input type="submit" value="Login">
+    <input type="submit" value="Login" style="margin: 0%;">
 </form>
     <p>Don't have an account? <a href="initialsurvey.php">Create one</a>.</p>
 <?php
