@@ -6,9 +6,7 @@
 }
 .dropdown-survey:hover{
     background-color: grey;
-}
-img{
-    width: 25%;
+
 }
 input[type=submit] {
     background-color: rebeccapurple;
@@ -22,7 +20,7 @@ input[type=submit] {
 input:hover {
     background-color: grey;
 }
-input[type=text] {
+input[type=text], input[type=password] {
     width: 100%;
     padding: 20px 20px;
     margin: 8px 0;
@@ -59,4 +57,3 @@ td {
     text-align: left;
     color: rebeccapurple;
 }
-
