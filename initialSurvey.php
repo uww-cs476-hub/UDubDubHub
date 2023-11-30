@@ -1,6 +1,12 @@
 <?php
 session_start();
-include "header.html";
+
+if (isset($_SESSION["netID"])) {
+    header("Location: welcome.php");
+}
+
+$title = "Survey";
+include "header.php";
 include "db_conn.php";
 
 if (!$db) {

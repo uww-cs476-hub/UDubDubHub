@@ -1,6 +1,12 @@
 <?php
 session_start();
-include "header.html";
+
+if (isset($_SESSION["netID"])) {
+    header("Location: welcome.php");
+}
+
+$title = "Login";
+include "header.php";
 ?>
 <h2>Login</h2>
 <?php

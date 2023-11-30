@@ -1,6 +1,8 @@
 <?php
     session_start();
-    include "header.html";
+
+    $title = "Home";
+    include "header.php";
     include "db_conn.php";
 
     if (!$db) {
@@ -19,6 +21,31 @@
     }
 
     switch ($mode) {
+
+        case "submitEvent":
+            $eventName = $_POST["eventName"];
+            $startTime = $_POST["startTime"];
+            $endTime = $_POST["endTime"];
+            $eventLocation = $_POST["eventLocation"];
+            $description = $_POST["description"];
+
+            $sql = "INSERT INTO `event` (`name`, `startTime`, `endTime`, `location`, `description`)
+                    VALUES (:eventName, :startTime, :endTime, :location, :description);";
+            $parameters = [
+                ":eventName" => $eventName,
+                ":startTime" => $startTime,
+                ":endTime" => $endTime,
+                ":location" => $eventLocation,
+                ":description" => $description
+            ];
+
+            $stm = $db->prepare($sql);
+            $stm->execute($parameters);
+
+            header("Location: welcome.php");
+
+            break;
+        
         case "login":
             $netID = (isset($_POST["netID"])) ? $_POST["netID"] : "-1";
             $password = (isset($_POST["password"])) ? $_POST["password"] : "-1";
@@ -40,11 +67,6 @@
                 $_SESSION['login_error'] = "Incorrect username or password!";
                 header("Location: login.php");
             }
-
-            break;
-
-        case "home":
-            header("Location: welcome.php");
 
             break;
 
@@ -108,7 +130,7 @@
 
                 $_SESSION["netID"] = $netID;
 
-                header("Location: index.php?mode=home");
+                header("Location: welcome.php");
             }
 
             break;
@@ -123,7 +145,7 @@
             break;
 
         default:
-            header("Location: initialSurvey.php");
+            header("Location: welcome.php");
 
             break;
     }

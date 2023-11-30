@@ -20,7 +20,7 @@ input[type=submit] {
 input:hover {
     background-color: lightgrey;
 }
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=datetime-local] {
     width: 100%;
     padding: 20px 20px;
     margin: 8px 0;
@@ -51,7 +51,7 @@ table {
 
 }
 textarea:hover {
-    background-color: grey;
+    background-color: lightgrey;
 }
 td {
     font-size: 1.5vw;
