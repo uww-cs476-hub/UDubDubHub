@@ -1,84 +1,78 @@
+<?php
+session_start();
+
+include "db_conn.php";
+
+if (!$db) {
+    echo "Could not connect to database!";
+    exit();
+}
+
+if (isset($_SESSION["netID"]) && isset($_POST["add-event"])) {
+    $title = $_POST["event-name"];
+    $day = $_POST["day-select"];
+    $time = $_POST["time-input"];
+    $netID = $_SESSION["netID"];
+
+    $sql = "INSERT INTO `reminder` (`title`, `day`, `time`, `netID`)
+            VALUES (:title, :day, :time, :netID);";
+    $parameters = [
+        ":title" => $title,
+        ":day" => $day,
+        ":time" => $time,
+        ":netID" => $netID
+    ];
+
+    $stm = $db->prepare($sql);
+    $stm->execute($parameters);
+}
+
+$reminderSet = null;
+$noteSet = null;
+
+if (isset($_SESSION["netID"])) {
+    $sql = "SELECT `title`, `day`, `time` FROM `reminder` WHERE `netID` = :netID;";
+    $parameters = [":netID" => $_SESSION["netID"]];
+
+    $stm = $db->prepare($sql);
+    $stm->execute($parameters);
+    $reminderSet = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT `title`, `details`, `creationTime`, `updateTime` FROM `note` WHERE `netID` = :netID;";
+    
+    $stm = $db->prepare($sql);
+    $stm->execute($parameters);
+    $noteSet = $stm->fetchAll(PDO::FETCH_ASSOC);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-        }
-
-        .planner {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-        }
-
-        .day {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-
-        .event {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px;
-            margin: 4px 0;
-            border-radius: 5px;
-        }
-
-        .add-event {
-            margin-top: 20px;
-        }
-
-        .note-container {
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .note {
-            background-color: #f8f8f8;
-            border: 1px solid #ddd;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .note h2 {
-            margin-top: 0;
-        }
-
-        .delete-button {
-            cursor: pointer;
-            color: red;
-        }
-
-        .timestamp {
-            color: grey;
-        }
-
-        .lastUpdatedTimestamp {
-            color: grey;
-        }
-    </style>
+    <link rel="stylesheet" href="plannerStyles.css">
+    <script src="plannerScript.js"></script>
 </head>
 
     <body>
     <!-- Planner Section -->
     <h1>Planner</h1>
 
-    <div class="planner">
+    <div>
         <?php
         $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-
-        foreach ($days as $day) {
-            echo '<div class="day">' . $day . '</div>';
-        }
         ?>
+        <table class='planner'>
+            <tr>
+            <?php
+            foreach ($days as $day) {
+                echo '<th class="day">' . $day . '</th>';
+            }
+            ?>
+            </tr>
+        </table>
     </div>
 
     <div class="add-event">
@@ -90,7 +84,7 @@
             <select id="day-select" name="day-select">
                 <?php
                 foreach ($days as $day) {
-                    echo '<option value="' . strtolower($day) . '">' . $day . '</option>';
+                    echo '<option value="' . $day . '">' . $day . '</option>';
                 }
                 ?>
             </select>
@@ -100,6 +94,7 @@
         </form>
 
         <?php
+        /*
         if (isset($_POST['add-event'])) {
             $eventName = $_POST['event-name'];
             $selectedDay = $_POST['day-select'];
@@ -110,6 +105,7 @@
                 echo '<script>alert("Please enter an event name.");</script>';
             }
         }
+        */
         ?>
 
         <script>
@@ -129,82 +125,28 @@
 
     <br><br>
     <h1>Notes</h1>
-    <div class="note-container" id="noteContainer">
-        <!-- Notes will be dynamically added here -->
-    </div>
 
     <div>
         <button onclick="createNote()">Create Note</button>
     </div>
 
-        <script>
-            // Function to create a new note
-            function createNote() {
-                const noteContainer = document.getElementById('noteContainer');
-
-                const note = document.createElement('div');
-                note.className = 'note';
-
-                const title = document.createElement('h2');
-                title.contentEditable = true;
-                title.innerText = 'New Note';
-
-                const content = document.createElement('div');
-                content.contentEditable = true;
-                content.innerText = 'Write your note here.';
-                content.addEventListener('input', updateLastUpdated);
-
-                const space = document.createElement('div');
-                space.innerText = '\n';
-
-                const lastUpdatedTimestamp = document.createElement('div');
-                lastUpdatedTimestamp.className = 'timestamp';
-                lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
-
-                const timestamp = document.createElement('div');
-                timestamp.className = 'timestamp';
-                timestamp.innerText = 'Created: ' + getCurrentDateTime();
-
-                const deleteButton = document.createElement('span');
-                deleteButton.className = 'delete-button';
-                deleteButton.innerText = 'Delete';
-                deleteButton.onclick = function () {
-                    note.remove();
-                };
-
-                note.appendChild(title);
-                note.appendChild(content);
-                note.appendChild(space);
-                note.appendChild(timestamp);
-                note.appendChild(lastUpdatedTimestamp);
-                note.appendChild(deleteButton);
-
-                noteContainer.appendChild(note);
-
-                // Function to update when note was last updated
-                function updateLastUpdated() {
-                    lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
+    <div class="note-container" id="noteContainer">
+        <!-- Notes will be dynamically added here -->
+        <?php
+            if (count($noteSet) > 0) {
+                foreach($noteSet as $note) {
+                    $title = $note["title"];
+                    $details = $note["details"];
+                    $creationTime = $note["creationTime"];
+                    $updateTime = $note["updateTime"];
+                    ?>
+                    <script>
+                        createNote("<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
+                    </script>
+                    <?php
                 }
             }
-
-            // Function to get the current time
-            function getCurrentDateTime() {
-                const now = new Date();
-                const year = now.getFullYear();
-                const month = (now.getMonth() + 1).toString().padStart(2, '0');
-                const day = now.getDate().toString().padStart(2, '0');
-                const hours = now.getHours().toString().padStart(2, '0');
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const ampm = hours >= 12 ? 'PM' : 'AM';
-
-                return `${month}-${day}-${year} ${format12HourTime(hours, minutes)} ${ampm}`;
-            }
-
-            // Function to format 12-hour time
-            function format12HourTime(hours, minutes) {
-                const hour12 = hours % 12 || 12;
-                return `${hour12}:${minutes}`;
-            }
-        </script>
+        ?>
+    </div>
     </body>
 </html>
