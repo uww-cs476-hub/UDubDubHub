@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0412a262-56fe-4a61-8a6c-998485cd74df" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/initialSurvey.php" beforeDir="false" afterPath="$PROJECT_DIR$/initialSurvey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/welcome.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutor_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/naman/OneDrive/Documents/GitHub/UDubDubHub",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,6 +53,11 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\naman\OneDrive\Documents\GitHub\UDubDubHub" />
+    </key>
+  </component>
   <component name="RunManager" selected="PHP Script.login.php">
     <configuration name="db_conn.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/db_conn.php">
       <method v="2" />
@@ -90,7 +95,9 @@
       <workItem from="1701243363653" duration="539000" />
       <workItem from="1701243911969" duration="3812000" />
       <workItem from="1701247881917" duration="28000" />
-      <workItem from="1701247931616" duration="3567000" />
+      <workItem from="1701247931616" duration="3679000" />
+      <workItem from="1701306976714" duration="642000" />
+      <workItem from="1701660417758" duration="3216000" />
     </task>
     <servers />
   </component>
