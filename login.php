@@ -8,17 +8,16 @@ if (isset($_SESSION["netID"])) {
 $title = "Login";
 include "header.php";
 ?>
-    <div class="styled-container">
-        <h2>Welcome to the UDubDubHub
-            <br>
-            Log in here:</h2>
-    </div>
+<div class="styled-container">
+    <h2>Welcome to the UDubDubHub</h2>
+</div>
 <?php
 if (isset($_SESSION['login_error'])) {
     echo '<div style="color: red;"><p>' . $_SESSION['login_error'] . '</p></div>';
     unset($_SESSION['login_error']);
 }
 ?>
+<h2>Login here:</h2>
 <form action="index.php?mode=login" method="post">
     <label for="netID">NetID:</label>
     <input type="text" name="netID" required><br>

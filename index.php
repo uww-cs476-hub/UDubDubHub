@@ -145,7 +145,7 @@
             break;
 
         default:
-            header("Location: welcome.php");
+            header("Location: dashboard.php");
 
             break;
     }

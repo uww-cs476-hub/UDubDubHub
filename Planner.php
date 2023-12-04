@@ -93,21 +93,6 @@ if (isset($_SESSION["netID"])) {
             <button type="submit" name="add-event">Add Event</button>
         </form>
 
-        <?php
-        /*
-        if (isset($_POST['add-event'])) {
-            $eventName = $_POST['event-name'];
-            $selectedDay = $_POST['day-select'];
-
-            if (trim($eventName) !== '') {
-                echo '<script>addEvent("' . htmlspecialchars($eventName) . '", "' . htmlspecialchars($selectedDay) . '");</script>';
-            } else {
-                echo '<script>alert("Please enter an event name.");</script>';
-            }
-        }
-        */
-        ?>
-
         <script>
             //Function to add an Event, does not work yet, maybe implement with DB?
             function addEvent(eventName, selectedDay) {
