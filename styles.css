@@ -20,7 +20,7 @@ input[type=submit] {
 input:hover {
     background-color: lightgrey;
 }
-input[type=text], input[type=password], input[type=datetime-local] {
+input[type=text], input[type=password], input[type=datetime-local], input[type=number] {
     width: 100%;
     padding: 20px 20px;
     margin: 8px 0;
