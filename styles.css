@@ -1,4 +1,4 @@
-a{
+.a-CreateOneLogin{
     color: white;
     text-decoration: none;
     background-color: black;
@@ -8,6 +8,25 @@ a{
     padding: .75%;
 }
 a:hover {
+    background-color: grey;
+}
+button {
+    background-color: rebeccapurple;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 1%;
+}
+button[type=submit] {
+    background-color: rebeccapurple;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 1%;
+}
+button:hover {
     background-color: grey;
 }
 .dropdown-survey{
@@ -32,8 +51,8 @@ input[type=submit] {
 input:hover {
     background-color: lightgrey;
 }
-input[type=text], input[type=password], input[type=datetime-local], input[type=number] {
-    width: 100%;
+input[type=text], input[type=password], input[type=datetime-local], input[type=number], input[type=time]{
+    width: 50%;
     padding: 20px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -56,6 +75,15 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     padding-left: 15%;
     padding-right: 15%;
 }
+select:hover{
+    background-color: lightgrey;
+}
+select{
+    width: 25%;
+    padding: 20px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
 table {
     border-collapse: collapse;
     margin:auto;
@@ -70,4 +98,62 @@ td {
     padding: 8px;
     text-align: left;
     color: rebeccapurple;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+/*planner styles*/
+.planner {
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+
+.day {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.event {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 5px;
+}
+
+.add-event {
+    margin-top: 20px;
+}
+
+.note-container {
+    max-width: 600px;
+    width: 100%;
+}
+
+.note {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.note h2 {
+    margin-top: 0;
+}
+
+.delete-button {
+    cursor: pointer;
+    color: red;
+}
+
+.timestamp {
+    color: grey;
+}
+
+.lastUpdatedTimestamp {
+    color: grey;
 }

@@ -52,14 +52,16 @@ if (isset($_SESSION["netID"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner</title>
-    <link rel="stylesheet" href="plannerStyles.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="plannerScript.js"></script>
 </head>
 
     <body>
     <!-- Planner Section -->
-    <h1>Planner</h1>
-
+    <div class="styled-container"><!--ww images from dr zach oster imported in here-->
+        <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
+        <h2>Planner</h2>
+    </div>
     <div>
         <?php
         $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
@@ -79,8 +81,11 @@ if (isset($_SESSION["netID"])) {
         <h2>Add Event</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label for="event-name">Event Name:</label>
+            <br>
             <input type="text" id="event-name" name="event-name">
+            <br>
             <label for="day-select">Select Day:</label>
+            <br>
             <select id="day-select" name="day-select">
                 <?php
                 foreach ($days as $day) {
@@ -88,8 +93,11 @@ if (isset($_SESSION["netID"])) {
                 }
                 ?>
             </select>
+            <br>
             <label for="time-input">Time:</label>
-            <input type="time" id="time-input" name="time-input">
+            <br>
+            <input type="time" id="time-input" name="time-input" style="width:25%">
+            <br>
             <button type="submit" name="add-event">Add Event</button>
         </form>
 

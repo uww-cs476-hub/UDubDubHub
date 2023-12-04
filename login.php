@@ -9,6 +9,7 @@ $title = "Login";
 include "header.php";
 ?>
 <div class="styled-container">
+    <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
     <h2>Welcome to the UDubDubHub</h2>
 </div>
 <?php
@@ -27,7 +28,7 @@ if (isset($_SESSION['login_error'])) {
 
     <input type="submit" value="Login" style="margin: 0%;">
 </form>
-    <p>Don't have an account? <a href="initialsurvey.php">Create one</a>.</p>
+    <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a>.</p>
 <?php
 include "footer.html";
 ?>

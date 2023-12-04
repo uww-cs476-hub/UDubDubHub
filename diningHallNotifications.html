@@ -9,14 +9,18 @@
 <body>
 <div class="styled-container">
     <h2>Dining Hall Notification</h2>
-    <h1>If there is a change to a dining locations hours, menus, etc. let your fellow students know here.</h1>
+    <h3>If there is a change to a dining locations hours, menus, etc. let your fellow students know here.</h3>
 </div>
 
 <form id="diningHallNotificationForm">
     <label for="diningHallNotificationText">Enter Notification:</label>
+    <br>
     <input type="text" id="diningHallNotificationText" required>
+    <br>
     <label for="notificationTime">Enter the duration the notification should be in effect for: (in hours):</label>
+    <br>
     <input type="number" id="notificationTime" required>
+    <br>
     <input type="submit" style="margin: 0% 0%" onclick="submitNotification()">
 </form>
 
