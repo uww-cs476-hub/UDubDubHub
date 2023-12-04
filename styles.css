@@ -1,3 +1,15 @@
+a{
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    padding: .75%;
+}
+a:hover {
+    background-color: grey;
+}
 .dropdown-survey{
     width: 100%;
     padding: 20px 20px;

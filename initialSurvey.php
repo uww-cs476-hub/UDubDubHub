@@ -15,7 +15,7 @@ if (!$db) {
 }
 ?>
 <div class="styled-container"><!--ww images from dr zach oster imported in here-->
-<img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" width="1122">
+<img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
 <h1>Welcome to the University of Wisconsin - Whitewater Information Hub</h1>
 <h3>The U-Dub-Dub-Hub requires you to complete this simple survey. This allows us to get more information on you as a student so that we can give you the best experience within the hub.</h3>
     <h4>Already a user? Login <a href="login.php">here</a></h4><!--link to login page-->
