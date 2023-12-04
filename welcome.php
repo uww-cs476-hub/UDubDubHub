@@ -17,6 +17,8 @@ echo "Welcome, " . $_SESSION["netID"] . "!";
 
 <div><a href="planner.php">View Planner</a></div>
 
+<div><a href="tutor.php">View Tutor Page</a></div>
+
 <?php
 
 echo "<br><a href='index.php?mode=logout'>Logout</a>";
