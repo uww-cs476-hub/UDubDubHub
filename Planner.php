@@ -33,13 +33,11 @@ $noteSet = null;
 if (isset($_SESSION["netID"])) {
     $sql = "SELECT `title`, `day`, `time` FROM `reminder` WHERE `netID` = :netID;";
     $parameters = [":netID" => $_SESSION["netID"]];
-
     $stm = $db->prepare($sql);
     $stm->execute($parameters);
     $reminderSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 
     $sql = "SELECT `title`, `details`, `creationTime`, `updateTime` FROM `note` WHERE `netID` = :netID;";
-    
     $stm = $db->prepare($sql);
     $stm->execute($parameters);
     $noteSet = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -52,8 +50,97 @@ if (isset($_SESSION["netID"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planner</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="plannerScript.js"></script>
+    <link rel="stylesheet" href="plannerStyles.css">
+    <script>
+        function createNote(newTitle = null, details = null, creationTime = null, updateTime = null) {
+            const noteContainer = document.getElementById('noteContainer');
+
+            const note = document.createElement('div');
+            note.className = 'note';
+
+            const title = document.createElement('h2');
+            title.contentEditable = true;
+            if (newTitle === null) {
+                title.innerText = 'New Note';
+            }
+            else {
+                title.innerText = newTitle;
+            }
+            title.addEventListener('input', updateLastUpdated);
+
+            const content = document.createElement('div');
+            content.contentEditable = true;
+            if (details === null) {
+                content.innerText = 'Write your note here.';
+            }
+            else {
+                content.innerText = details;
+            }
+            content.addEventListener('input', updateLastUpdated);
+
+            const space = document.createElement('div');
+            space.innerText = '\n';
+
+            const lastUpdatedTimestamp = document.createElement('div');
+            lastUpdatedTimestamp.className = 'timestamp';
+            if (updateTime === null) {
+                lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
+            }
+            else {
+                lastUpdatedTimestamp.innerText = 'Last Updated: ' + updateTime;
+            }
+
+            const timestamp = document.createElement('div');
+            timestamp.className = 'timestamp';
+            if (creationTime === null) {
+                timestamp.innerText = 'Created: ' + getCurrentDateTime();
+            }
+            else {
+                timestamp.innerText = 'Created: ' + creationTime;
+            }
+
+            const deleteButton = document.createElement('span');
+            deleteButton.className = 'delete-button';
+            deleteButton.innerText = 'Delete';
+            deleteButton.onclick = function () {
+                note.remove();
+            };
+
+            note.appendChild(title);
+            note.appendChild(content);
+            note.appendChild(space);
+            note.appendChild(lastUpdatedTimestamp);
+            note.appendChild(timestamp);
+            note.appendChild(deleteButton);
+
+            noteContainer.insertBefore(note, noteContainer.children[0]);
+
+            // Function to update when note was last updated
+            function updateLastUpdated() {
+                lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
+            }
+        }
+
+        // Function to get the current time
+        function getCurrentDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            return `${month}-${day}-${year} ${format12HourTime(hours, minutes)} ${ampm}`;
+        }
+
+        // Function to format 12-hour time
+        function format12HourTime(hours, minutes) {
+            const hour12 = hours % 12 || 12;
+            return `${hour12}:${minutes}`;
+        }
+    </script>
+>>>>>>> Stashed changes
 </head>
 
     <body>
@@ -100,18 +187,6 @@ if (isset($_SESSION["netID"])) {
             <br>
             <button type="submit" name="add-event">Add Event</button>
         </form>
-
-        <script>
-            //Function to add an Event, does not work yet, maybe implement with DB?
-            function addEvent(eventName, selectedDay) {
-                const dayElement = document.querySelector('.' + selectedDay);
-                const eventElement = document.createElement('div');
-                eventElement.className = 'event';
-                eventElement.textContent = eventName;
-
-                dayElement.appendChild(eventElement);
-            }
-        </script>
     </div>
 
     <!-- Note Taker Section -->
