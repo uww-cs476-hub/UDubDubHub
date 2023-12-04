@@ -140,7 +140,6 @@ if (isset($_SESSION["netID"])) {
             return `${hour12}:${minutes}`;
         }
     </script>
->>>>>>> Stashed changes
 </head>
 
     <body>
@@ -167,12 +166,13 @@ if (isset($_SESSION["netID"])) {
     <div class="add-event">
         <h2>Add Event</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <div class="event-item">
             <label for="event-name">Event Name:</label>
-            <br>
             <input type="text" id="event-name" name="event-name">
+            </div>
             <br>
+            <div class="event-item">
             <label for="day-select">Select Day:</label>
-            <br>
             <select id="day-select" name="day-select">
                 <?php
                 foreach ($days as $day) {
@@ -180,12 +180,16 @@ if (isset($_SESSION["netID"])) {
                 }
                 ?>
             </select>
+            </div>
             <br>
+            <div class="event-item">
             <label for="time-input">Time:</label>
-            <br>
             <input type="time" id="time-input" name="time-input" style="width:25%">
+            </div>
             <br>
+            <div class="event-item">
             <button type="submit" name="add-event">Add Event</button>
+            </div>
         </form>
     </div>
 

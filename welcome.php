@@ -15,7 +15,7 @@ echo "Welcome, " . $_SESSION["netID"] . "!";
 
 <div><a href="submitAnEvent.php">Submit Event</a></div>
 
-<div><a href="planner.php">View Planner</a></div>
+<div><a href="Planner.php">View Planner</a></div>
 
 <div><a href="tutor.php">View Tutor Page</a></div>
 

@@ -1,10 +1,14 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <?php include 'header.php'; ?>
 </head>
 <body>
     <header>
@@ -112,6 +116,4 @@
         <input type="submit" value="Update Visibility">
     </form>
 
-    <?php include 'footer.php'; ?>
-</body>
-</html>
+<?php include 'footer.html'; ?>

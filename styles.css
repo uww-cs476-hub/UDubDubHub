@@ -8,7 +8,7 @@
     padding: .75%;
 }
 a:hover {
-    background-color: grey;
+    background-color: lightgrey;
 }
 button {
     background-color: rebeccapurple;
@@ -27,7 +27,7 @@ button[type=submit] {
     padding: 1%;
 }
 button:hover {
-    background-color: grey;
+    background-color: lightgrey;
 }
 .dropdown-survey{
     width: 100%;
