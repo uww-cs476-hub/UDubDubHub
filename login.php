@@ -18,17 +18,34 @@ if (isset($_SESSION['login_error'])) {
     unset($_SESSION['login_error']);
 }
 ?>
-<h2>Login here:</h2>
 <form action="index.php?mode=login" method="post">
-    <label for="netID">NetID:</label>
-    <input type="text" name="netID" required><br>
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" required><br>
-
-    <input type="submit" value="Login" style="margin: 0%;">
+    <table>
+        <tr>
+            <td>
+                <h2>Login here:</h2>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="netID">NetID:</label>
+            <input type="text" name="netID" required></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password:</label>
+                <input type="password" name="password" required><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Login" style="margin: 0%;">
+            </td>
+    </tr>
+        <tr>
+            <td>
+                <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a>.</p>
+            </td>
+        </tr>
+    </table>
 </form>
-    <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a>.</p>
 <?php
 include "footer.html";
 ?>

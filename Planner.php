@@ -1,7 +1,8 @@
 <?php
 session_start();
-
+$title = "Planner";
 include "db_conn.php";
+include "header.php";
 
 if (!$db) {
     echo "Could not connect to database!";
@@ -43,14 +44,6 @@ if (isset($_SESSION["netID"])) {
     $noteSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planner</title>
-    <link rel="stylesheet" href="plannerStyles.css">
     <script>
         function createNote(newTitle = null, details = null, creationTime = null, updateTime = null) {
             const noteContainer = document.getElementById('noteContainer');
@@ -142,83 +135,81 @@ if (isset($_SESSION["netID"])) {
     </script>
 </head>
 
-    <body>
-    <!-- Planner Section -->
-    <div class="styled-container"><!--ww images from dr zach oster imported in here-->
-        <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
-        <h2>Planner</h2>
-    </div>
-    <div>
-        <?php
-        $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-        ?>
-        <table class='planner'>
-            <tr>
+<body>
+<!-- Planner Section -->
+<div class="styled-container"><!--ww images from dr zach oster imported in here-->
+    <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
+    <h2>Planner</h2>
+</div>
+<div>
+    <?php
+    $days = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+    ?>
+    <table class='planner'>
+        <tr>
             <?php
             foreach ($days as $day) {
                 echo '<th class="day">' . $day . '</th>';
             }
             ?>
-            </tr>
-        </table>
-    </div>
+        </tr>
+    </table>
+</div>
 
-    <div class="add-event">
-        <h2>Add Event</h2>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-            <div class="event-item">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" name="event-name">
-            </div>
-            <br>
-            <div class="event-item">
-            <label for="day-select">Select Day:</label>
-            <select id="day-select" name="day-select">
+<div class="add-event">
+    <table>
+    <tr><td><h2>Add Event</h2></td></tr>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <div class="event-item">
+            <tr><td> <label for="event-name">Event Name:</label></td></tr>
+            <tr><td><input type="text" id="event-name" name="event-name"></td></tr>
+        </div>
+        <div class="event-item">
+            <tr><td><label for="day-select">Select Day:</label></td></tr>
+            <tr><td> <select id="day-select" name="day-select">
                 <?php
                 foreach ($days as $day) {
                     echo '<option value="' . $day . '">' . $day . '</option>';
                 }
                 ?>
-            </select>
-            </div>
-            <br>
-            <div class="event-item">
-            <label for="time-input">Time:</label>
-            <input type="time" id="time-input" name="time-input" style="width:25%">
-            </div>
-            <br>
-            <div class="event-item">
-            <button type="submit" name="add-event">Add Event</button>
-            </div>
-        </form>
-    </div>
+            </select></td></tr>
+        </div>
+        <div class="event-item">
+            <tr><td> <label for="time-input">Time:</label></td></tr>
+            <tr><td><input type="time" id="time-input" name="time-input" style="width:25%"></td></tr>
+        </div>
+        <div class="event-item">
+            <tr><td><button type="submit" name="add-event">Add Event</button></td></tr>
+        </div>
+    </form>
+    </table>
+</div>
 
-    <!-- Note Taker Section -->
+<!-- Note Taker Section -->
+<table>
+        <tr><td><h1>Notes</h1></td></tr>
+<div>
+    <tr><td><button onclick="createNote()">Create Note</button></td></tr>
+</div>
 
-    <br><br>
-    <h1>Notes</h1>
-
-    <div>
-        <button onclick="createNote()">Create Note</button>
-    </div>
-
-    <div class="note-container" id="noteContainer">
-        <!-- Notes will be dynamically added here -->
-        <?php
-            if (count($noteSet) > 0) {
-                foreach($noteSet as $note) {
-                    $title = $note["title"];
-                    $details = $note["details"];
-                    $creationTime = $note["creationTime"];
-                    $updateTime = $note["updateTime"];
-                    ?>
-                    <script>
-                        createNote("<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
-                    </script>
-                    <?php
-                }
-            }
-        ?>
-    </div>
-    </body>
+<div class="note-container" id="noteContainer">
+    <!-- Notes will be dynamically added here -->
+    <?php
+    if (count($noteSet) > 0) {
+        foreach($noteSet as $note) {
+            $title = $note["title"];
+            $details = $note["details"];
+            $creationTime = $note["creationTime"];
+            $updateTime = $note["updateTime"];
+            ?>
+            <script>
+                createNote("<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
+            </script>
+            <?php
+        }
+    }
+    ?>
+</div>
+</table>
+</body>
 </html>

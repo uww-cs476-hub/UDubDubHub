@@ -27,7 +27,10 @@ if (!$db) {
     }
 ?>
     <form action="index.php?mode=addNewUser" method="post">
-    <table class="table">
+    <table>
+        <tr>
+            <td>
+                <h2>Create an Account:</h2></td></tr>
         <tr>
             <!--this may need to become a variable in php that can be used for the home page to say "Welcome... $Name"-->
             <td>First Name:</td>

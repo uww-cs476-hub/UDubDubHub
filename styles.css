@@ -52,7 +52,7 @@ input:hover {
     background-color: lightgrey;
 }
 input[type=text], input[type=password], input[type=datetime-local], input[type=number], input[type=time]{
-    width: 50%;
+    width: 100%;
     padding: 20px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -85,6 +85,7 @@ select{
     box-sizing: border-box;
 }
 table {
+    border: 1px rebeccapurple;
     border-collapse: collapse;
     margin:auto;
     width: 50%;
@@ -94,9 +95,8 @@ textarea:hover {
     background-color: lightgrey;
 }
 td {
-    font-size: 1.5vw;
-    padding: 8px;
     text-align: left;
+    font-size: 1.5vw;
     color: rebeccapurple;
 }
 body {
