@@ -26,11 +26,14 @@ if (isset($_SESSION['login_error'])) {
             </td>
         </tr>
         <tr>
-            <td><label for="netID">NetID:</label>
-            <input type="text" name="netID" required></td>
+            <td>
+                <label for="netID">NetID:</label>
+                <input type="text" name="netID" required>
+            </td>
         </tr>
         <tr>
-            <td><label for="password">Password:</label>
+            <td>
+                <label for="password">Password:</label>
                 <input type="password" name="password" required><br>
             </td>
         </tr>
@@ -38,7 +41,7 @@ if (isset($_SESSION['login_error'])) {
             <td>
                 <input type="submit" value="Login" style="margin: 0%;">
             </td>
-    </tr>
+        </tr>
         <tr>
             <td>
                 <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a>.</p>
