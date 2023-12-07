@@ -103,7 +103,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 20px;
 }
-/*planner styles*/
+
+/* Planner Styles */
 .planner {
     width: 100%;
     table-layout: fixed;
@@ -130,6 +131,7 @@ body {
 
 .note-container {
     max-width: 600px;
+    margin: auto;
     width: 100%;
 }
 

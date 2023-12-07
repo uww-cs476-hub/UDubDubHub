@@ -336,6 +336,7 @@ if (isset($_SESSION["netID"])) {
     }
     ?>
 </div>
-</table>
-</body>
-</html>
+
+<?php
+    include "footer.html";
+?>
