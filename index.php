@@ -42,7 +42,7 @@
             $stm = $db->prepare($sql);
             $stm->execute($parameters);
 
-            header("Location: welcome.php");
+            header("Location: modules.php");
 
             break;
         
@@ -62,7 +62,7 @@
 
             if (isset($result['netID'])) {
                 $_SESSION['netID'] = $netID;
-                header("Location: welcome.php");
+                header("Location: modules.php");
             } else {
                 $_SESSION['login_error'] = "Incorrect username or password!";
                 header("Location: login.php");
@@ -130,7 +130,7 @@
 
                 $_SESSION["netID"] = $netID;
 
-                header("Location: welcome.php");
+                header("Location: modules.php");
             }
 
             break;

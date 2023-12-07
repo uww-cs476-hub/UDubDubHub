@@ -28,12 +28,18 @@ if (isset($_SESSION['login_error'])) {
         <tr>
             <td>
                 <label for="netID">NetID:</label>
+            </td>
+        <tr>
+            <td>
                 <input type="text" name="netID" required>
             </td>
         </tr>
         <tr>
             <td>
                 <label for="password">Password:</label>
+            </td>
+            <tr>
+            <td>
                 <input type="password" name="password" required><br>
             </td>
         </tr>

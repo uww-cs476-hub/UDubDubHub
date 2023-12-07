@@ -7,8 +7,19 @@
     font-family: 'Times New Roman', Times, serif;
     padding: .75%;
 }
-a:hover {
+.a-CreateOneLogin:hover{
     background-color: lightgrey;
+}
+.a-modules a{
+    color: white;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.25vw;
+    padding: .75%;
+    text-decoration: none;
+}
+a:hover {
+    text-shadow: 0 0 15px darkgrey;
 }
 button {
     background-color: rebeccapurple;
@@ -57,6 +68,11 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     margin: 8px 0;
     box-sizing: border-box;
 }
+.module-checkboxes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .styled-container {
     background-color: rebeccapurple;
     color: white;
@@ -69,7 +85,26 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     font-size: 2.5vw;
     margin-bottom: 1%;
 }
-
+.styled-module{
+    background-color: rebeccapurple;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    float:left;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+.styled-module:hover{
+    box-shadow: 0 0 15px black;
+}
+.module-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 5px;
+    text-align: center;
+}
 .styled-container h3 {
     font-size: 1.5vw;
     padding-left: 15%;
@@ -85,18 +120,19 @@ select{
     box-sizing: border-box;
 }
 table {
-    border: 1px rebeccapurple;
     border-collapse: collapse;
     margin:auto;
     width: 50%;
 
 }
+
 textarea:hover {
     background-color: lightgrey;
 }
 td {
-    text-align: left;
     font-size: 1.5vw;
+    padding: 8px;
+    text-align: left;
     color: rebeccapurple;
 }
 body {
@@ -158,4 +194,67 @@ body {
 
 .lastUpdatedTimestamp {
     color: grey;
+}
+/*tutor styles*/
+
+
+.tutor-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.course-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 15px;
+    width: 300px;
+}
+
+.course-card h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.tutors {
+    display: flex;
+    flex-direction: column;
+}
+
+.tutor {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.contact-button {
+    background-color: #80049c;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.contact-button:hover {
+    background-color: #80049c;
+}
+
+.course-card:hover {
+    box-shadow: 0 0 15px rgba(128, 4, 156, 0.7);
+}
+
+.search-bar-tutor {
+    text-align: center;
+}
+
+h1{
+    text-align: center;
 }

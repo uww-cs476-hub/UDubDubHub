@@ -1,23 +1,22 @@
 <?php
 session_start();
+$title = "Tutor";
 include "db_conn.php";
+include 'header.php';
+
 if (!$db) {
     echo "Could not connect to database!";
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutor Scheduling Service</title>
-    <link rel="stylesheet" href="tutor_style.css">
-</head>
+
 <body>
+<div class="styled-container">
+    <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
 <h1>Tutoring Service</h1>
 <div class="search-bar-tutor">
     <input type="text" id="majorSearch" placeholder="Search for a major..." oninput="filterMajors()">
+</div>
 </div>
 <div class="tutor-container">
     <?php

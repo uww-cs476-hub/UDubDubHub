@@ -28,7 +28,7 @@ if (!$db) {
     }
 ?>
     <form action="index.php?mode=addNewUser" method="post">
-    <table>
+        <table>
         <tr>
             <td>
                 <h2>Create an Account:</h2></td></tr>
