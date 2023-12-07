@@ -54,24 +54,12 @@ if (isset($_SESSION["netID"])) {
 
             const note = document.createElement('div');
             note.className = 'note';
-            var newNote = false;
             if (ID != "" && ID != null) {
                 note.id = "note-" + ID;
             }
-            else if (noteContainer.children.length > 0) {
-                var idStr = noteContainer.children[0].id.substring(5);
-                ID = parseInt(idStr) + 1;
-                note.id = "note-" + ID;
-                newNote = true;
-            }
-            else {
-                ID = 1;
-                note.id = "note-" + ID;
-                newNote = true;
-            }
 
             const title = document.createElement('h2');
-            title.className = "note-title";
+            title.id = "note-title";
             title.contentEditable = true;
             if (newTitle === null) {
                 title.innerText = 'New Note';
@@ -84,7 +72,7 @@ if (isset($_SESSION["netID"])) {
             });
 
             const content = document.createElement('div');
-            content.className = "note-content";
+            content.id = "note-content";
             content.contentEditable = true;
             if (details === null) {
                 content.innerText = 'Write your note here.';
@@ -100,7 +88,7 @@ if (isset($_SESSION["netID"])) {
             space.innerText = '\n';
 
             const lastUpdatedTimestamp = document.createElement('div');
-            lastUpdatedTimestamp.id = 'update-timestamp-' + ID;
+            lastUpdatedTimestamp.id = 'update-timestamp'
             lastUpdatedTimestamp.className = 'timestamp';
             var newUpdateTime = null;
             if (updateTime === null) {
@@ -138,7 +126,7 @@ if (isset($_SESSION["netID"])) {
 
             noteContainer.insertBefore(note, noteContainer.children[0]);
 
-            if (newNote) {
+            if (ID == null) {
                 addNote(title.innerText, content.innerText, newUpdateTime, newCreationTime);
             }
 
@@ -202,15 +190,14 @@ if (isset($_SESSION["netID"])) {
 
         // Function to update note
         function updateNote(e) {
+            document.getElementById('update-timestamp').innerText = 'Last Updated: ' + convertDateTime(getCurrentDateTime());
             var target = e.target;
             var parent = target.parentNode;
             var idStr = parent.id.substring(5);
             var parentID = parseInt(idStr);
 
-            document.getElementById('update-timestamp-' + parentID).innerText = 'Last Updated: ' + convertDateTime(getCurrentDateTime());
-
             var xhr = new XMLHttpRequest();
-            if (target.className == "note-title") {
+            if (target.id == "note-title") {
                 var data = {
                     method: "update",
                     noteID: parentID,
@@ -218,7 +205,7 @@ if (isset($_SESSION["netID"])) {
                     noteUpdateTime: getCurrentDateTime()
                 };
             }
-            if (target.className == "note-content") {
+            if (target.id == "note-content") {
                 var data = {
                     method: "update",
                     noteID: parentID,
@@ -274,6 +261,8 @@ if (isset($_SESSION["netID"])) {
 <body>
 <!-- Planner Section -->
 <div class="styled-container"><!--ww images from dr zach oster imported in here-->
+    <div class='a-modules a' style='float:left'><a href='modules.php'>← Dashboard</a></div>
+    <br><br>
     <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
     <h2>Planner</h2>
 </div>

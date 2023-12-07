@@ -5,6 +5,8 @@ $title = "Event Form";
 include "header.php";
 ?>
 <div class="styled-container">
+    <div class='a-modules a' style='float:left'><a href='modules.php'>← Dashboard</a></div>
+    <br>
     <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
     <h1>UWW Event Form</h1>
     <h3>Have an event you would like to share with your peers? Submit your event here and we will notify our fellow UDubDubHub users.</h3>

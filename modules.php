@@ -10,12 +10,13 @@ include 'header.php'
         <?php
         echo "<div class='a-modules a' style='float:left'><a href='index.php?mode=logout'>Logout</a></div>";
         ?>
+        <br>
         <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
-        <h1>Hello, <?php echo isset($_GET['username']) ? $_GET['username'] : 'guest';?></h1>
+        <h1><?php echo "Welcome, " . $_SESSION["netID"] . "!";?></h1>
         <div class="a-modules a">
         <a href="Planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
         </div>
-        <input type="text" id="moduleSearch" placeholder="Search..." oninput="filterModules()">
+        <input type="text" id="moduleSearch" style="width:50%" placeholder="Search..." oninput="filterModules()">
     </div>
 </header>
 
@@ -41,11 +42,7 @@ $modules = [
                     <a href="diningHallNotifications.html">Submit a Dining Hall Alert</a><br>
                     <a href="https://www.uww.edu/rec-sports">Fitness Information</a>',
     ],
-    'Other Resources' => [
-        'visibility' => true,
-        'content' => '<h2>Other Resources</h2>
-                    <a href="https://www.uww.edu/career">Career Services</a><br>
-                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
+
     'Student Directory' => [
         'visibility' => true,
         'content' => '<h2>Student Directory</h2>
@@ -69,7 +66,13 @@ $modules = [
         'visibility' => true,
         'content' => ' <h2>Career Resources</h2>
                     <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
-    ];
+    'Other Resources' => [
+        'visibility' => true,
+        'content' => '<h2>Other Resources</h2>
+                    <a href="https://www.uww.edu/career">Career Services</a><br>
+                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
+
+];
 
 $userRole = isset($_GET['role']) ? $_GET['role'] : 'guest';
 $active;
@@ -150,11 +153,6 @@ switch ($userRole) {
                     <a href="diningHallNotifications.html">Submit a Dining Hall Alert</a><br>
                     <a href="https://www.uww.edu/rec-sports">Fitness Information</a>',
             ],
-            'Other Resources' => [
-                'visibility' => true,
-                'content' => '<h2>Other Resources</h2>
-                    <a href="https://www.uww.edu/career">Career Services</a><br>
-                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
             'Student Directory' => [
                 'visibility' => true,
                 'content' => '<h2>Student Directory</h2>
@@ -177,6 +175,11 @@ switch ($userRole) {
             'Career Resources' => [
                 'visibility' => false,
                 'content' => ' <h2>Career Resources</h2>
+                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
+            'Other Resources' => [
+                'visibility' => true,
+                'content' => '<h2>Other Resources</h2>
+                    <a href="https://www.uww.edu/career">Career Services</a><br>
                     <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
         ];
 
@@ -308,11 +311,6 @@ switch ($userRole) {
                     <a href="diningHallNotifications.html">Submit a Dining Hall Alert</a><br>
                     <a href="https://www.uww.edu/rec-sports">Fitness Information</a>',
             ],
-            'Other Resources' => [
-                'visibility' => true,
-                'content' => '<h2>Other Resources</h2>
-                    <a href="https://www.uww.edu/career">Career Services</a><br>
-                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
             'Student Directory' => [
                 'visibility' => true,
                 'content' => '<h2>Student Directory</h2>
@@ -336,6 +334,12 @@ switch ($userRole) {
                 'visibility' => true,
                 'content' => ' <h2>Career Resources</h2>
                     <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
+            'Other Resources' => [
+                'visibility' => true,
+                'content' => '<h2>Other Resources</h2>
+                    <a href="https://www.uww.edu/career">Career Services</a><br>
+                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'    ],
+
         ];
         break;
 }

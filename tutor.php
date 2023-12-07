@@ -12,6 +12,8 @@ if (!$db) {
 
 <body>
 <div class="styled-container">
+    <div class='a-modules a' style='float:left'><a href='modules.php'>← Dashboard</a></div>
+    <br>
     <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
 <h1>Tutoring Service</h1>
 <div class="search-bar-tutor">
