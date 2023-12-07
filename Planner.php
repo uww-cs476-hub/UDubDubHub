@@ -187,11 +187,10 @@ if (isset($_SESSION["netID"])) {
 
 <!-- Note Taker Section -->
 <table>
-    <tr><td><h1>Notes</h1></td></tr>
-
+        <tr><td><h1>Notes</h1></td></tr>
+<div>
     <tr><td><button onclick="createNote()">Create Note</button></td></tr>
-
-</table>
+</div>
 
 <div class="note-container" id="noteContainer">
     <!-- Notes will be dynamically added here -->
@@ -211,7 +210,6 @@ if (isset($_SESSION["netID"])) {
     }
     ?>
 </div>
-
-<?php
-    include "footer.html";
-?>
+</table>
+</body>
+</html>

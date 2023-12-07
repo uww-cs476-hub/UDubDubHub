@@ -12,6 +12,7 @@ include "db_conn.php";
 if (!$db) {
     echo "Could not connect to database!";
     exit();
+
 }
 ?>
 <div class="styled-container"><!--ww images from dr zach oster imported in here-->

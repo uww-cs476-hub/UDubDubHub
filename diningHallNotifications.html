@@ -9,45 +9,19 @@
 <body>
 <div class="styled-container">
     <h2>Dining Hall Notification</h2>
-    <h3>If there is a change to a dining locations hours, menus, etc. let your fellow students know here.</h3>
+    <h3>If there is a ch ange to a dining locations hours, menus, etc. let your fellow students know here.</h3>
 </div>
 
 <form id="diningHallNotificationForm">
     <label for="diningHallNotificationText">Enter Notification:</label>
     <br>
-    <input type="text" id="diningHallNotificationText" required>
+    <input type="text" id="diningHallNotificationText" name="diningHallNotificationText" required>
     <br>
-    <label for="notificationTime">Enter the duration the notification should be in effect for: (in hours):</label>
+    <label for="notificationHours">Enter the duration the notification should be in effect for: (in hours):</label>
     <br>
-    <input type="number" id="notificationTime" required>
+    <input type="number" id="notificationHours" name="notificationHours" required>
     <br>
-    <input type="submit" style="margin: 0% 0%" onclick="submitNotification()">
+    <input type="submit" style="margin: 0% 0%" value="Submit" >
 </form>
-
-<script>
-        function submitNotification() {
-        var diningHallNotificationText = document.getElementById('notificationText').value;
-        var notificationHours = parseInt(document.getElementById('notificationHours').value) || 0;
-
-        if (diningHallNotificationText.trim() !== '' && (notificationHours > 0 )) {
-        // Convert hours and minutes to milliseconds
-        var timeLimitMilliseconds = (notificationHours * 60 * 60 * 1000) ;
-
-        // Store the notification in localStorage
-        var notification = {
-        text: diningHallNotificationText,
-        timeLimit: timeLimitMilliseconds,
-        timestamp: new Date().getTime()
-    };
-
-        var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
-        notifications.push(notification);
-        localStorage.setItem('notifications', JSON.stringify(notifications));
-
-        // Clear the form
-        document.getElementById('diningHallNotificationForm').reset();
-    }
-    }
-</script>
 </body>
 </html>

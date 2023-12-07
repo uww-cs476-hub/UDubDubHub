@@ -44,5 +44,3 @@ include "header.php";
     </table>
     <input type="submit" value="Submit">
 </form>
-</body>
-</html>
