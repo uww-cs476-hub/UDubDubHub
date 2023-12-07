@@ -9,6 +9,10 @@ if (!$db) {
     exit();
 }
 
+if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+}
+
 if (isset($_SESSION["netID"]) && isset($_POST["add-event"])) {
     $title = $_POST["event-name"];
     $day = $_POST["day-select"];
@@ -38,20 +42,24 @@ if (isset($_SESSION["netID"])) {
     $stm->execute($parameters);
     $reminderSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql = "SELECT `title`, `details`, `creationTime`, `updateTime` FROM `note` WHERE `netID` = :netID;";
+    $sql = "SELECT `ID`, `title`, `details`, `creationTime`, `updateTime` FROM `note` WHERE `netID` = :netID;";
     $stm = $db->prepare($sql);
     $stm->execute($parameters);
     $noteSet = $stm->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
     <script>
-        function createNote(newTitle = null, details = null, creationTime = null, updateTime = null) {
+        function createNote(ID = null, newTitle = null, details = null, creationTime = null, updateTime = null) {
             const noteContainer = document.getElementById('noteContainer');
 
             const note = document.createElement('div');
             note.className = 'note';
+            if (ID != "" && ID != null) {
+                note.id = "note-" + ID;
+            }
 
             const title = document.createElement('h2');
+            title.id = "note-title";
             title.contentEditable = true;
             if (newTitle === null) {
                 title.innerText = 'New Note';
@@ -59,9 +67,12 @@ if (isset($_SESSION["netID"])) {
             else {
                 title.innerText = newTitle;
             }
-            title.addEventListener('input', updateLastUpdated);
+            title.addEventListener('blur', function(e) {
+                updateNote(e);
+            });
 
             const content = document.createElement('div');
+            content.id = "note-content";
             content.contentEditable = true;
             if (details === null) {
                 content.innerText = 'Write your note here.';
@@ -69,35 +80,42 @@ if (isset($_SESSION["netID"])) {
             else {
                 content.innerText = details;
             }
-            content.addEventListener('input', updateLastUpdated);
+            content.addEventListener('blur', function(e) {
+                updateNote(e);
+            });
 
             const space = document.createElement('div');
             space.innerText = '\n';
 
             const lastUpdatedTimestamp = document.createElement('div');
+            lastUpdatedTimestamp.id = 'update-timestamp'
             lastUpdatedTimestamp.className = 'timestamp';
+            var newUpdateTime = null;
             if (updateTime === null) {
-                lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
+                newUpdateTime = getCurrentDateTime();
             }
             else {
-                lastUpdatedTimestamp.innerText = 'Last Updated: ' + updateTime;
+                newUpdateTime = updateTime;
             }
+            lastUpdatedTimestamp.innerText = 'Last Updated: ' + convertDateTime(newUpdateTime);
 
             const timestamp = document.createElement('div');
             timestamp.className = 'timestamp';
+            var newCreationTime = null;
             if (creationTime === null) {
-                timestamp.innerText = 'Created: ' + getCurrentDateTime();
+                newCreationTime = getCurrentDateTime();
             }
             else {
-                timestamp.innerText = 'Created: ' + creationTime;
+                newCreationTime = creationTime;
             }
+            timestamp.innerText = 'Created: ' + convertDateTime(newCreationTime);
 
             const deleteButton = document.createElement('span');
             deleteButton.className = 'delete-button';
             deleteButton.innerText = 'Delete';
-            deleteButton.onclick = function () {
-                note.remove();
-            };
+            deleteButton.addEventListener("click", function() {
+                deleteNote(note);
+            });
 
             note.appendChild(title);
             note.appendChild(content);
@@ -108,29 +126,134 @@ if (isset($_SESSION["netID"])) {
 
             noteContainer.insertBefore(note, noteContainer.children[0]);
 
-            // Function to update when note was last updated
-            function updateLastUpdated() {
-                lastUpdatedTimestamp.innerText = 'Last Updated: ' + getCurrentDateTime();
+            if (ID == null) {
+                addNote(title.innerText, content.innerText, newUpdateTime, newCreationTime);
             }
+
+            var noteHeader = document.getElementById("note-table");
+            var height = noteHeader.offsetTop;
+            window.scrollTo(0, height);
         }
 
-        // Function to get the current time
         function getCurrentDateTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = (now.getMonth() + 1).toString().padStart(2, '0');
-            const day = now.getDate().toString().padStart(2, '0');
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const ampm = hours >= 12 ? 'PM' : 'AM';
+            var current = new Date();
+            var cDate = current.getFullYear() + '-' + (current.getMonth() + 1).toString().padStart(2, '0') + '-' + current.getDate().toString().padStart(2, '0');
+            var cTime = current.getHours().toString().padStart(2, '0') + ":" + current.getMinutes().toString().padStart(2, '0') + ":" + current.getSeconds().toString().padStart(2, '0');
+            var dateTime = cDate + ' ' + cTime;
+            
+            return dateTime;
+        }
 
-            return `${month}-${day}-${year} ${format12HourTime(hours, minutes)} ${ampm}`;
+        function convertDateTime(dateTime) {
+            var year = dateTime.substring(0, 4);
+            var month = dateTime.substring(5, 7).padStart(2, '0');
+            var day = dateTime.substring(8, 10).padStart(2, '0');
+            var hours = dateTime.substring(11, 13).padStart(2, '0');
+            var minutes = dateTime.substring(14, 16).padStart(2, '0');
+            var seconds = dateTime.substring(17, 19).padStart(2, '0');
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+
+            return `${month}-${day}-${year} ${format12HourTime(hours, minutes, seconds)} ${ampm}`;
         }
 
         // Function to format 12-hour time
-        function format12HourTime(hours, minutes) {
+        function format12HourTime(hours, minutes, seconds) {
             const hour12 = hours % 12 || 12;
-            return `${hour12}:${minutes}`;
+            return `${hour12}:${minutes}:${seconds}`;
+        }
+
+        // Function to add note to database
+        function addNote(title, content, updateTime, creationTime) {
+            var xhr = new XMLHttpRequest();
+            var data = {
+                method: "add",
+                noteTitle: title,
+                noteContent: content,
+                noteUpdateTime: updateTime,
+                noteCreationTime: creationTime
+            };
+            var parameters = JSON.stringify(data);
+            xhr.open("POST", "processNote.php", true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(parameters);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                    }
+                    else {
+                        console.error("There was a problem with the request.");
+                    }
+                }
+            };
+        }
+
+        // Function to update note
+        function updateNote(e) {
+            document.getElementById('update-timestamp').innerText = 'Last Updated: ' + convertDateTime(getCurrentDateTime());
+            var target = e.target;
+            var parent = target.parentNode;
+            var idStr = parent.id.substring(5);
+            var parentID = parseInt(idStr);
+
+            var xhr = new XMLHttpRequest();
+            if (target.id == "note-title") {
+                var data = {
+                    method: "update",
+                    noteID: parentID,
+                    noteTitle: target.innerText,
+                    noteUpdateTime: getCurrentDateTime()
+                };
+            }
+            if (target.id == "note-content") {
+                var data = {
+                    method: "update",
+                    noteID: parentID,
+                    noteContent: target.innerText,
+                    noteUpdateTime: getCurrentDateTime()
+                };
+            }
+            var parameters = JSON.stringify(data);
+            xhr.open("POST", "processNote.php", true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(parameters);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                    }
+                    else {
+                        console.error("There was a problem with the request.");
+                    }
+                }
+            };
+        }
+
+        // Function to delete note
+        function deleteNote(note) {
+            note.remove();
+            var idStr = note.id.substring(5);
+            var idInt = parseInt(idStr);
+
+            var xhr = new XMLHttpRequest();
+            var data = {
+                method: "delete",
+                noteID: idInt
+            };
+            var parameters = JSON.stringify(data);
+            xhr.open("POST", "processNote.php", true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(parameters);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log(xhr.responseText);
+                    }
+                    else {
+                        console.error("There was a problem with the request.");
+                    }
+                }
+            };
         }
     </script>
 </head>
@@ -167,6 +290,7 @@ if (isset($_SESSION["netID"])) {
         <div class="event-item">
             <tr><td><label for="day-select">Select Day:</label></td></tr>
             <tr><td> <select id="day-select" name="day-select">
+                <option value="" disabled selected></option>
                 <?php
                 foreach ($days as $day) {
                     echo '<option value="' . $day . '">' . $day . '</option>';
@@ -175,7 +299,7 @@ if (isset($_SESSION["netID"])) {
             </select></td></tr>
         </div>
         <div class="event-item">
-            <tr><td> <label for="time-input">Time:</label></td></tr>
+            <tr><td><label for="time-input">Time:</label></td></tr>
             <tr><td><input type="time" id="time-input" name="time-input" style="width:25%"></td></tr>
         </div>
         <div class="event-item">
@@ -186,24 +310,26 @@ if (isset($_SESSION["netID"])) {
 </div>
 
 <!-- Note Taker Section -->
-<table>
-        <tr><td><h1>Notes</h1></td></tr>
-<div>
-    <tr><td><button onclick="createNote()">Create Note</button></td></tr>
-</div>
+<table id="note-table">
+    <tr><td><h1>Notes</h1></td></tr>
+
+    <tr><td><button id="create-note" onclick="createNote()">Create Note</button></td></tr>
+
+</table>
 
 <div class="note-container" id="noteContainer">
     <!-- Notes will be dynamically added here -->
     <?php
     if (count($noteSet) > 0) {
         foreach($noteSet as $note) {
+            $ID = $note["ID"];
             $title = $note["title"];
             $details = $note["details"];
             $creationTime = $note["creationTime"];
             $updateTime = $note["updateTime"];
             ?>
             <script>
-                createNote("<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
+                createNote("<?php echo $ID; ?>", "<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
             </script>
             <?php
         }
