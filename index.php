@@ -62,7 +62,7 @@
 
             if (isset($result['netID'])) {
                 $_SESSION['netID'] = $netID;
-                $_SESSION['firstName'] = $firstName;
+                $_SESSION['firstName'] = $result['firstName'];
                 header("Location: modules.php");
             } else {
                 $_SESSION['login_error'] = "Incorrect username or password!";

@@ -1,4 +1,4 @@
-.a-CreateOneLogin{
+.a-CreateOneLogin {
     color: white;
     text-decoration: none;
     background-color: black;
@@ -7,10 +7,10 @@
     font-family: 'Times New Roman', Times, serif;
     padding: .75%;
 }
-.a-CreateOneLogin:hover{
+.a-CreateOneLogin:hover {
     background-color: lightgrey;
 }
-.a-modules a{
+.a-modules a {
     color: white;
     cursor: pointer;
     font-family: 'Times New Roman', Times, serif;
@@ -68,7 +68,7 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
 .styled-container {
     background-color: rebeccapurple;
     color: white;
-    padding:1%;
+    padding: 1%;
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -102,11 +102,10 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     padding-left: 15%;
     padding-right: 15%;
 }
-select:hover{
+select:hover {
     background-color: lightgrey;
 }
-select{
-    width: 25%;
+select {
     padding: 20px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -132,10 +131,27 @@ body {
 }
 
 /* Planner Styles */
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 100%;
+}
+
 .planner {
     width: 100%;
     table-layout: fixed;
     border-spacing: 10px;
+}
+
+.reminder {
+    font-size: 15px;
+    padding: 8px;
+    text-align: center;
+    color: black;
+    border: 2px solid #ddd;
 }
 
 .day {

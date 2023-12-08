@@ -1,5 +1,8 @@
 <?php
+session_start();
+$title = "Module Visibility";
 include 'header.php';
+
 // Check if form is submitted to update module visibility
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Assuming you have a form with checkboxes for each module
@@ -9,12 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     file_put_contents('visibilityData.json', json_encode($newVisibilityData));
 
     // Redirect back to the dashboard page
-    header('Location: dashboard.php');
+    header('Location: modules.php');
     exit;
 }
 
 // Read the current visibility data
-$visibilityData = json_decode(file_get_contents('visibilityData.json'), true);
+//$visibilityData = json_decode(file_get_contents('visibilityData.json'), true);
 
 $modules = [
     'Get to Know Your Way Around Campus',
@@ -33,7 +36,7 @@ $modules = [
 
 <h2>Update Module Visibility</h2>
 
-<form method="post" action="moduleVisibility.php">
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <?php foreach ($modules as $moduleName): ?>
         <label>
             <input type="checkbox" name="visibility[<?php echo $moduleName; ?>]"
