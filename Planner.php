@@ -58,15 +58,7 @@ if (isset($_SESSION["netID"])) {
             if (ID != "" && ID != null) {
                 note.id = "note-" + ID;
             }
-            else if (noteContainer.children.length > 0) {
-                var idStr = noteContainer.children[0].id.substring(5);
-                ID = parseInt(idStr) + 1;
-                note.id = "note-" + ID;
-                newNote = true;
-            }
             else {
-                ID = 1;
-                note.id = "note-" + ID;
                 newNote = true;
             }
 
@@ -100,7 +92,6 @@ if (isset($_SESSION["netID"])) {
             space.innerText = '\n';
 
             const lastUpdatedTimestamp = document.createElement('div');
-            lastUpdatedTimestamp.id = 'update-timestamp-' + ID;
             lastUpdatedTimestamp.className = 'timestamp';
             var newUpdateTime = null;
             if (updateTime === null) {
@@ -122,11 +113,18 @@ if (isset($_SESSION["netID"])) {
             }
             timestamp.innerText = 'Created: ' + convertDateTime(newCreationTime);
 
+            if (newNote == true) {
+                addNote(title.innerText, content.innerText, newUpdateTime, newCreationTime, function(response) {
+                    ID = parseInt(response);
+                    note.id = "note-" + ID;
+                });
+            }
+
             const deleteButton = document.createElement('span');
             deleteButton.className = 'delete-button';
             deleteButton.innerText = 'Delete';
-            deleteButton.addEventListener("click", function() {
-                deleteNote(note);
+            deleteButton.addEventListener("click", function(e) {
+                deleteNote(e);
             });
 
             note.appendChild(title);
@@ -137,10 +135,6 @@ if (isset($_SESSION["netID"])) {
             note.appendChild(deleteButton);
 
             noteContainer.insertBefore(note, noteContainer.children[0]);
-
-            if (newNote) {
-                addNote(title.innerText, content.innerText, newUpdateTime, newCreationTime);
-            }
 
             var noteHeader = document.getElementById("note-table");
             var height = noteHeader.offsetTop;
@@ -175,7 +169,7 @@ if (isset($_SESSION["netID"])) {
         }
 
         // Function to add note to database
-        function addNote(title, content, updateTime, creationTime) {
+        function addNote(title, content, updateTime, creationTime, callback) {
             var xhr = new XMLHttpRequest();
             var data = {
                 method: "add",
@@ -191,7 +185,10 @@ if (isset($_SESSION["netID"])) {
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        console.log(xhr.responseText);
+                        var jsonResponse = xhr.response;
+                        var decodedData = JSON.parse(jsonResponse);
+                        console.log(decodedData.responseID);
+                        callback(decodedData.responseID);
                     }
                     else {
                         console.error("There was a problem with the request.");
@@ -207,7 +204,7 @@ if (isset($_SESSION["netID"])) {
             var idStr = parent.id.substring(5);
             var parentID = parseInt(idStr);
 
-            document.getElementById('update-timestamp-' + parentID).innerText = 'Last Updated: ' + convertDateTime(getCurrentDateTime());
+            parent.children[3].innerText = 'Last Updated: ' + convertDateTime(getCurrentDateTime());
 
             var xhr = new XMLHttpRequest();
             if (target.className == "note-title") {
@@ -243,15 +240,17 @@ if (isset($_SESSION["netID"])) {
         }
 
         // Function to delete note
-        function deleteNote(note) {
-            note.remove();
-            var idStr = note.id.substring(5);
-            var idInt = parseInt(idStr);
+        function deleteNote(e) {
+            var target = e.target;
+            var parent = target.parentNode;
+            var idStr = parent.id.substring(5);
+            var parentID = parseInt(idStr);
+            parent.remove();
 
             var xhr = new XMLHttpRequest();
             var data = {
                 method: "delete",
-                noteID: idInt
+                noteID: parentID
             };
             var parameters = JSON.stringify(data);
             xhr.open("POST", "processNote.php", true);
@@ -294,7 +293,7 @@ if (isset($_SESSION["netID"])) {
 
 <div class="add-event">
     <table>
-    <tr><td><h2>Add Event</h2></td></tr>
+    <tr><td><h1>Add Event</h1></td></tr>
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <div class="event-item">
             <tr><td> <label for="event-name">Event Name:</label></td></tr>
@@ -323,31 +322,33 @@ if (isset($_SESSION["netID"])) {
 </div>
 
 <!-- Note Taker Section -->
-<table id="note-table">
-    <tr><td><h1>Notes</h1></td></tr>
+<div class="note-div">
+    <table id="note-table">
+        <tr><td><h1>Notes</h1></td></tr>
 
-    <tr><td><button id="create-note" onclick="createNote()">Create Note</button></td></tr>
+        <tr><td style="text-align: center;"><button id="create-note" onclick="createNote()">Create Note</button></td></tr>
 
-</table>
+    </table>
 
-<div class="note-container" id="noteContainer">
-    <!-- Notes will be dynamically added here -->
-    <?php
-    if (count($noteSet) > 0) {
-        foreach($noteSet as $note) {
-            $ID = $note["ID"];
-            $title = $note["title"];
-            $details = $note["details"];
-            $creationTime = $note["creationTime"];
-            $updateTime = $note["updateTime"];
-            ?>
-            <script>
-                createNote("<?php echo $ID; ?>", "<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
-            </script>
-            <?php
+    <div class="note-container" id="noteContainer">
+        <!-- Notes will be dynamically added here -->
+        <?php
+        if (count($noteSet) > 0) {
+            foreach($noteSet as $note) {
+                $ID = $note["ID"];
+                $title = $note["title"];
+                $details = $note["details"];
+                $creationTime = $note["creationTime"];
+                $updateTime = $note["updateTime"];
+                ?>
+                <script>
+                    createNote("<?php echo $ID; ?>", "<?php echo $title; ?>", "<?php echo $details; ?>", "<?php echo $creationTime; ?>", "<?php echo $updateTime; ?>");
+                </script>
+                <?php
+            }
         }
-    }
-    ?>
+        ?>
+    </div>
 </div>
 
 <?php

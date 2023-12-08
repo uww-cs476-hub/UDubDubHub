@@ -26,6 +26,10 @@
         ];
         $stm = $db->prepare($sql);
         $stm->execute($parameters);
+        
+        $responseID = $db->lastInsertId();
+        $returnData = array('responseID' => $responseID);
+        echo json_encode($returnData);
     }
     else if ($method == "update") {
         $ID = $data["noteID"];

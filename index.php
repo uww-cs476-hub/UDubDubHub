@@ -50,7 +50,7 @@
             $netID = (isset($_POST["netID"])) ? $_POST["netID"] : "-1";
             $password = (isset($_POST["password"])) ? $_POST["password"] : "-1";
             
-            $sql = "SELECT `netID` FROM `user` WHERE `netID` = :netID AND `password` = :password;";
+            $sql = "SELECT `netID`, `firstName` FROM `user` WHERE `netID` = :netID AND `password` = :password;";
             $parameters = [
                 ":netID" => $netID,
                 ":password" => hash('sha256', $password)
@@ -62,6 +62,7 @@
 
             if (isset($result['netID'])) {
                 $_SESSION['netID'] = $netID;
+                $_SESSION['firstName'] = $firstName;
                 header("Location: modules.php");
             } else {
                 $_SESSION['login_error'] = "Incorrect username or password!";
@@ -145,7 +146,7 @@
             break;
 
         default:
-            header("Location: dashboard.php");
+            header("Location: modules.php");
 
             break;
     }

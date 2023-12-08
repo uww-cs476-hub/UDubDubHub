@@ -12,7 +12,7 @@ include 'header.php'
         ?>
         <br>
         <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
-        <h1><?php echo "Welcome, " . $_SESSION["netID"] . "!";?></h1>
+        <h1><?php echo "Welcome, " . $_SESSION["firstName"] . "!";?></h1>
         <div class="a-modules a">
         <a href="Planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
         </div>

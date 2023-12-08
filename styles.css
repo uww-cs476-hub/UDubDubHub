@@ -29,14 +29,6 @@ button {
     font-family: 'Times New Roman', Times, serif;
     padding: 1%;
 }
-button[type=submit] {
-    background-color: rebeccapurple;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-family: 'Times New Roman', Times, serif;
-    padding: 1%;
-}
 button:hover {
     background-color: lightgrey;
 }
@@ -121,9 +113,8 @@ select{
 }
 table {
     border-collapse: collapse;
-    margin:auto;
+    margin: auto;
     width: 50%;
-
 }
 
 textarea:hover {
@@ -163,10 +154,23 @@ body {
 
 .add-event {
     margin-top: 20px;
+    float: left;
+    width: 50%;
 }
 
 .note-container {
     max-width: 600px;
+    margin: auto;
+    width: 100%;
+}
+
+.note-div {
+    margin-top: 20px;
+    float: right;
+    width: 50%;
+}
+
+#note-table {
     margin: auto;
     width: 100%;
 }
@@ -195,9 +199,8 @@ body {
 .lastUpdatedTimestamp {
     color: grey;
 }
-/*tutor styles*/
 
-
+/* Tutor Styles */
 .tutor-container {
     display: flex;
     flex-wrap: wrap;
@@ -255,6 +258,6 @@ body {
     text-align: center;
 }
 
-h1{
+h1 {
     text-align: center;
 }
