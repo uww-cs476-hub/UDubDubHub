@@ -55,7 +55,7 @@ if (!$db) {
                 <option value="Freshman">Freshman</option>
                 <option value="Sophomore">Sophomore</option>
                 <option value="Junior">Junior</option>
-                <option value="Senior">Senior</option>
+                <option value="Senior">Senior+</option>
                 <option value="Transfer Student">Transfer Student</option>
             </select></td>
         </tr>

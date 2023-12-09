@@ -10,7 +10,6 @@ if (!$db) {
 }
 ?>
 
-<body>
 <div class="styled-container">
     <div class='a-modules a' style='float:left'><a href='modules.php'>← Dashboard</a></div>
     <br>
@@ -81,5 +80,6 @@ if (!$db) {
         }
     }
 </script>
-</body>
-</html>
+<?php
+    include "footer.html";
+?>

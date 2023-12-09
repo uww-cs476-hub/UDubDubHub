@@ -129,7 +129,73 @@
                     $stm->execute($parameters);
                 }
 
+                $modules = [];
+                switch($standing) {
+                    case "Transfer Student":
+                    case "Freshman":
+                        $modules = [
+                            'Get to Know Your Way Around Campus',
+                            'Helpful Academic Resources',
+                            'Campus Life Resources',
+                            'Other Resources',
+                            'Student Directory',
+                            'Get Involved',
+                            'Need Technical Help?'
+                        ];
+
+                        break;
+                    
+                    case "Sophomore":
+                    case "Junior":
+                        $modules = [
+                            'Campus Life Resources',
+                            'Student Directory',
+                            'Get Involved',
+                            'Need Technical Help?'
+                        ];
+
+                        break;
+
+                    case "Senior":
+                        $modules = [
+                            'Student Directory',
+                            'Get Involved',
+                            'Need Technical Help?',
+                            'Graduation Resources',
+                            'Career Resources',
+                            'Other Resources'
+                        ];
+
+                        break;
+                    
+                    default:
+                        $modules = [
+                            'Get to Know Your Way Around Campus',
+                            'Helpful Academic Resources',
+                            'Campus Life Resources',
+                            'Student Directory',
+                            'Get Involved',
+                            'Need Technical Help?',
+                            'Graduation Resources',
+                            'Career Resources',
+                            'Other Resources'
+                        ];
+
+                        break;
+                }
+
+                foreach ($modules as $module) {
+                    $sql = "INSERT INTO `save` (moduleName, netID) VALUES (:moduleName, :netID);";
+                    $parameters = [
+                        ":moduleName" => $module,
+                        ":netID" => $netID
+                    ];
+                    $stm = $db->prepare($sql);
+                    $stm->execute($parameters);
+                }
+
                 $_SESSION["netID"] = $netID;
+                $_SESSION['firstName'] = $firstName;
 
                 header("Location: modules.php");
             }

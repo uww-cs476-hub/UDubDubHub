@@ -1,7 +1,8 @@
 <?php
 session_start();
-$title = "Planner";
 include "db_conn.php";
+
+$title = "Planner";
 include "header.php";
 
 if (!$db) {
@@ -13,7 +14,7 @@ if (!isset($_SESSION["netID"])) {
     header("Location: login.php");
 }
 
-if (isset($_SESSION["netID"]) && isset($_POST["add-event"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["event-name"];
     $day = $_POST["day-select"];
     $time = $_POST["time-input"];
@@ -31,7 +32,7 @@ if (isset($_SESSION["netID"]) && isset($_POST["add-event"])) {
     $stm = $db->prepare($sql);
     $stm->execute($parameters);
 
-    unset($_POST["add-event"]);
+    header("Location: Planner.php");
 }
 
 $SundaySet = array();
