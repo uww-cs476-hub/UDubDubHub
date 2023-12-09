@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stm = $db->prepare($sql);
     $stm->execute($parameters);
 
-    header("Location: Planner.php");
+    header("Location: planner.php");
 }
 
 $SundaySet = array();

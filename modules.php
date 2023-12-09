@@ -2,7 +2,7 @@
 session_start();
 include "db_conn.php";
 
-$title = "Modules";
+$title = "Dashboard";
 include 'header.php';
 
 $sql = "SELECT `moduleName` FROM `save` WHERE `netID` = :netID;";
@@ -24,7 +24,7 @@ $checked = $stm->fetchAll();
         <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
         <h1><?php echo "Welcome, " . $_SESSION["firstName"] . "!";?></h1>
         <div class="a-modules a">
-        <a href="Planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
+        <a href="planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
         </div>
         <input type="text" id="moduleSearch" style="width:50%" placeholder="Search..." oninput="filterModules()">
     </div>
@@ -48,8 +48,8 @@ $modules = [
     'Campus Life Resources' => [
         'visibility' => false,
         'content' => '<h2>Campus Life Resources</h2>
-                    <a href="dining_info_page.html">Dining Halls</a><br>
-                    <a href="diningHallNotifications.html">Submit a Dining Hall Alert</a><br>
+                    <a href="diningInfoPage.php">Dining Halls</a><br>
+                    <a href="diningHallAlerts.php">Submit a Dining Hall Alert</a><br>
                     <a href="https://www.uww.edu/rec-sports">Fitness Information</a>'],
     'Student Directory' => [
         'visibility' => false,
