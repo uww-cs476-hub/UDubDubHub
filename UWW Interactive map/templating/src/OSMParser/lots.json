@@ -1,0 +1,77 @@
+{
+    "functionName": "parkingLots",
+    "fileName": ".\\parkingLots.js",
+    "queries": [
+        { 
+            "wayName":"Lot 1",
+            "jsKey":"lot1"
+        },
+        {
+            "wayName":"Lot 2",
+            "jsKey": "lot2"
+        },
+        {
+            "wayName":"Lot 3",
+            "jsKey": "lot3"
+        },
+        {
+            "wayName":"Lot 4",
+            "jsKey":"lot4"
+        },
+        {
+            "wayName":"Lot 7",
+            "jsKey":"lot7"
+        },
+        {
+            "wayName":"Lot 8",
+            "jsKey":"lot8"
+        },
+        {
+            "wayName":"Lot 11",
+            "jsKey":"lot11"
+        },
+        {
+            "wayName":"Lot 12",
+            "jsKey":"lot12"
+        },
+        {
+            "wayName":"Lot 13",
+            "jsKey":"lot13"
+        },
+        {
+            "wayName":"Lot 14",
+            "jsKey":"lot14"
+        },
+        {
+            "wayName":"Lot 15",
+            "jsKey":"lot15"
+        },
+        {
+            "wayName":"Lot 17",
+            "jsKey":"lot17"
+        },
+        {
+            "wayName":"Lot 18",
+            "jsKey":"lot18"
+        },
+        {
+            "wayName":"Lot 19",
+            "jsKey":"lot19"
+        },
+        {
+            "wayName":"Lot 20",
+            "jsKey":"lot20"
+        },
+        {
+            "wayName":"Lot 21",
+            "jsKey":"lot21"
+        },
+        {
+            "wayName":"Lot 22",
+            "jsKey":"lot22"
+        },
+        {
+            "wayName":"Lot 24",
+            "jsKey":"lot24"
+        }]
+}

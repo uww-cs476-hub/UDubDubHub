@@ -1,0 +1,179 @@
+{
+    "waySource": "./map.osm",
+    "jsonOut": "./../../../web/buildings.json",
+    "imagesRoot": ".\\thumbnails\\",
+    "groups": [
+        {
+            "groupName": "Visitor and Commuter Parking",
+            "style": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "#babb8f",
+                "color": "#848569"
+            },
+            "selectedStyle": {
+                "fillOpacity": 1,
+                "fillColor": "blue",
+                "weight": 1,
+                "color": "red",
+                "opacity": 1,
+                "lineJoin": "miter"
+            },
+            "queries": [
+                {"wayName":"Lot 1", "name":"Lot 1"},
+                {"wayName":"Lot 2", "name":"Lot 2"},
+                {"wayName":"Lot 4", "name":"Lot 4"},
+                {"wayName":"Lot 7", "name":"Lot 7"},
+                {"wayName":"Lot 11", "name":"Lot 11"},
+                {"wayName":"Lot 12", "name":"Lot 12"},
+                {"wayName":"Lot 13", "name":"Lot 13"},
+                {"wayName":"Lot 14", "name":"Lot 14"},
+                {"wayName":"Lot 15", "name":"Lot 15"},
+                {"wayName":"Lot 21", "name":"Lot 21"},
+                {"wayName":"Lot 22", "name":"Lot 22"},
+                {"wayName":"Lot 24", "name":"Lot 24"}
+            ]   
+        },
+        {
+            "groupName": "Residential Parking",
+            "style": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "#BCBDC1",
+                "color": "#8B8C8E"
+            },
+            "selectedStyle": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "blue",
+                "color": "red"
+            },
+            "queries": [
+                {"wayName":"Lot 3", "name":"Lot 3"},
+                {"wayName":"Lot 8", "name":"Lot 8"},
+                {"wayName":"Lot 17", "name":"Lot 17"},
+                {"wayName":"Lot 18", "name":"Lot 18"},
+                {"wayName":"Lot 19", "name":"Lot 19"},
+                {"wayName":"Lot 20", "name":"Lot 20"}]
+        },
+        {
+            "groupName": "Visitor Destinations",
+            "style": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "#4E2784",
+                "color": "#3D1F68"
+            },
+            "selectedStyle": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "blue",
+                "color": "red"
+            },
+            "queries": [
+                {"wayName":"Williams Center", "name":"Williams Center", "img":"OutdoorBBCT.jpg", "addr":"907 Schwager Dr",
+                "link":"https://www.uww.edu/rec-sports/facilities"},
+                {"wayName":"Visitor Center", "name":"Visitor Center", "addr":"826 W Starin Rd",
+                "link": "https://www.uww.edu/adminaffairs/parking-regulations"},
+                {"wayName":"Moraine Bookstore", "name": "Moraine Bookstore", "addr":"780 W Starin Rd",
+                "link":"https://www.uwwhitewaterbookstore.com/"},
+                {"wayName":"Center of The Arts", "name": "Greenhill Center of the Arts", "addr":"950 W Main St",
+                "link":"https://www.uww.edu/coac"},
+                {"wayName":"James R. Connor University Center", "name": "James R. Connor University Center", "addr":"190 Hamilton Green Way",
+                "link":"https://www.uww.edu/uc"},
+                {"wayName":"Perkins Stadium", "name": "Perkins Stadium", "addr":"910 W Schwager Dr",
+                "link":"https://uwwsports.com/sports/football"}]
+        },
+        {
+            "groupName": "University Housing and Dining",
+            "style" : {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "#FECD4D",
+                "color": "#E2B646"
+            },
+            "selectedStyle": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "blue",
+                "color": "red"
+            },
+            "queries": [
+                {"wayName":"Esker Dining Hall", "name":"Esker Dining Hall", "addr":"420 N Prairie St",
+                "link":"https://uww.campus-dining.com/dining-location/esker-dining-hall/"},
+                {"wayName":"Tutt Hall", "name":"Tutt", "img":"HT_tutt.jpg", "addr":"431 North Prairie Street",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/tutt"},
+                {"wayName":"Wellers Hall", "name":"Wellers", "img":"HT_wellers2.jpg", "addr":"705 W Lauderdale Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/wellers"},
+                {"wayName":"Wells West Hal", "name":"Wells West", "img":"HT_wellswest2.jpg", "addr":"611 W Lauderdale Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/wellswest"},
+                {"wayName":"Wells East Hall", "name":"Wells East", "img":"HT_wellseast2.jpg", "addr":"611 W Lauderdale Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/wellseast"},
+                {"wayName":"Knilans Hall", "name":"Knilans", "img":"HT_knilans.jpg", "addr":"411 North Prairie Street",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/knilans"},
+                {"wayName":"Fischer Hall", "name":"Fischer", "img":"HT_Fischer.jpg", "addr":"711 West Lauderdale Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/fischer"},
+                {"wayName":"Ma'iingan", "name":"Ma'iingan", "img":"HT_maiingan.jpg", "addr":"451 Warhawk Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/maiingan"},
+                {"wayName":"Bigelow Hall", "name":"Bigelow", "img":"HT_bigelow.jpg", "addr":"441 Koshkonong Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/bigelow"},
+                {"wayName":"Lee Hall", "name":"Lee", "img":"HT_lee.jpg", "addr":"429 Koshkonong Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/lee"},
+                {"wayName":"Fricker Hall", "name":"Fricker", "img":"HT_fricker.jpg", "addr":"423 W. Koshkonong Drive",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/fricker"},
+                {"wayName":"Arey Hall", "name":"Arey", "img":"HT_arey.jpg", "addr": "1024 W Starin Rd",
+                "link":"https://www.uww.edu/residencehalls/hall-tours/arey"},
+                {"wayName":"Benson Hall", "name":"Benson", "img":"HT_benson.jpg", "addr":"1008 West Starin Road",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/benson"},
+                {"wayName":"Starin Hall", "name":"Pulliam", "img":"starinoutside.jpg", "addr":"901 West Starin Road",
+                "link":"https://www.uww.edu/housing/residencehalls/hall-tours/pulliam"},
+                {"wayName":"Drumlin Hall", "name":"Drumlin Dining Hall", "addr":"420 Warhawk Drive",
+                "link":"https://uww.campus-dining.com/dining-location/drumlin-dining-hall/"},
+                {"wayName":"Clem Hall", "name":"Clem", "img":"HT_clem.jpg", "addr":"444 Warhawk Drive"}]
+        },
+        {
+            "groupName": "Academic Halls and Administrative Buildings",
+            "style": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "#F58225",
+                "color": "#DB7223"
+            },
+            "selectedStyle": {
+                "fillOpacity": 1,
+                "weight": 1,
+                "fillColor": "blue",
+                "color": "red"
+            }, 
+            "queries": [
+                {"wayName":"Goodhue Hall", "name":"Goodhue", "addr":"790 W Starin Rd",
+                "link":"https://www.uww.edu/adminaffairs/police/"},
+                {"wayName":"White Hall", "name":"White", "addr":"847 W Starin Rd",
+                "link":"https://www.uww.edu/cls/"},
+                {"wayName":"Timothy J. Hyland Hall", "name":"Timothy J. Hyland", "addr":"809 W Starin Rd",
+                "link":"https://www.uww.edu/cobe/"},
+                {"wayName":"Laurentide Hall", "name":"Laurentide", "addr":"237 N Prince St",
+                "link":"https://www.uww.edu/cls/"},
+                {"wayName":"McCutchan Hall", "name":"McCutchan", "addr":"239 N Prince St",
+                "link":"https://www.uww.edu/sdes"},
+                {"wayName":"Alumni Center", "name":"Alumni Center", "addr":"810 W Main St",
+                "link":""},
+                {"wayName":"Andersen Library", "name":"Anderson Hall/Library", "addr":"750 W Main St",
+                "link":""},
+                {"wayName":"Hyer Hall", "name":"Hyer", "addr":"800 W Main St",
+                "link":""},
+                {"wayName":"McGraw Hall", "name":"McGraw", "addr":"150 Hamilton Green Way",
+                "link":""},
+                {"wayName":"Heide Hall", "name":"Heide", "addr":"180 N Prairie St",
+                "link":""},
+                {"wayName":"Winther Hall", "name":"Winther", "addr":"230 N Prairie St",
+                "link":""},
+                {"wayName":"Roseman Hall", "name":"Roseman", "addr":"234 N Prairie St",
+                "link":""},
+                {"wayName":"Upham Hall", "name":"Upham", "addr":"771 W Starin Rd",
+                "link":""},
+                {"wayName":"Berezowitz Student Athletic Complex", "name":"Berezowitz Student Athletic Complex", "addr":"900 W Schwager Dr",
+                "link":""}]
+        }
+    ]
+}

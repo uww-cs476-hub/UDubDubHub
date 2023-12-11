@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+            }
+
+            .testPopup {
+                width: fit-content;
+                height: fit-content;
+                border-radius: 0.5vh;
+                overflow: hidden;
+                padding: 1vh;
+                background-color: #4F2683;
+            }
+            
+            .popupTop {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .popupInfo {
+                margin-top: 0;
+                padding-top: 0;
+                padding-left: 1vh;
+            }
+            .popupInfo > p {
+                margin-top: 0;
+                padding-top: 0;
+                margin-bottom: 0.5vh;
+                padding-bottom: 0;
+                color: white;
+                font-family: "PT Sans",sans-serif;
+            }
+            .popupInfo > p:nth-child(2) {
+                font-size: .85em;
+            }
+
+            .popupLink {
+                float: right;
+                margin-right: 0.5vw;
+                margin-top: 1vh;
+                color: lightblue;
+                font-family: "PT Sans",sans-serif;
+                text-decoration: none;
+            }
+            .thumbnail {
+                max-width: 8vw;
+                max-height: 8vh;
+                width: auto;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="testPopup">
+            <div class="popupTop">
+                <img src=".\images\HT_arey.jpg" class="thumbnail"/>
+                <div class="popupInfo">
+                    <p>Arey Hall</p>
+                    <p>some addr st. 6537</p>
+                </div>
+            </div>
+            <a class="popupLink" href="https://www.uww.edu/residencehalls/hall-tours/arey">More >></a>
+        </div>
+    </body>
+</html>

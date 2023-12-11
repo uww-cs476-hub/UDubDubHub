@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href=".\leaflet.css"/>
+        <script src=".\leaflet.js"></script>
+        <link rel="stylesheet" href=".\uwwmap2.css"/>
+    </head>
+    <body id="body">
+        <script>
+            var currPage = "https://www.uww.edu/campus-info/campus";
+            function onPageChange() {
+                if(pageChangeHandler)
+                    pageChangeHandler();
+            }
+        </script>
+        <div id="content">
+            <div id="map"></div>
+            <div id="sidebar">
+                <div id="iframecontrol">
+                    <button id="backbutton">
+                        <img src=".\images\back-button.svg"/>
+                    </button>
+                </div>
+                <iframe
+                    src="https://www.uww.edu/campus-info/campus"
+                    id="embedded"
+                    onload="onPageChange()"></iframe>
+            </div>
+            <div id="info">
+                <div id="keyContainer">
+                    <table id="keyTable">
+                        <thead><hr>Map Key<hr></thead>
+                        <tbody id="keys">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="debug">
+            </div>
+        </div>
+        <script src=".\main3.js"></script>
+    </body>
+</html>
