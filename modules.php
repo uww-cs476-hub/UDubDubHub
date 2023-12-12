@@ -36,6 +36,7 @@ $modules = [
     'Get to Know Your Way Around Campus' => [
         'visibility' => false,
         'content' => '<h2>Welcome to Campus!</h2>
+                    <a href="UWW Interactive map/web/index.html">Interactive Map</a><br>
                     <a href="https://www.uww.edu/adminaffairs/parking-regulations">Parking Information</a><br>
                     <a href="https://www.bird.co/#ride-on">Use Birds to Zoom Around Town!</a>'],
     'Helpful Academic Resources' => [
