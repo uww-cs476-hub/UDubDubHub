@@ -77,7 +77,7 @@ $modules = [
         'visibility' => false,
         'content' => '<h2>Other Resources</h2>
                     <a href="https://www.uww.edu/career">Career Services</a><br>
-                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'],
+                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>']
 ];
 
 foreach ($checked as $module) {
@@ -92,7 +92,7 @@ foreach ($checked as $module) {
     // Display modules in the form
     foreach ($modules as $moduleName => $module) {
         if ($module['visibility']) {
-            echo "<div class='styled-module'><div class='a-modules a'>" . $module['content'] . "</div></div>";
+            echo "<div class='styled-module'><div class='a-modules a'>" . $module['content'] . "</div><br></div>";
         }
     }
     ?>
