@@ -5,6 +5,10 @@ include "db_conn.php";
 $title = "Dashboard";
 include 'header.php';
 
+if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+}
+
 $sql = "SELECT `moduleName` FROM `save` WHERE `netID` = :netID;";
 $parameters = [
     ":netID" => $_SESSION["netID"]

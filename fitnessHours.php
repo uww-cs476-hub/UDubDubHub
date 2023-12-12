@@ -1,17 +1,21 @@
 <?php
-  session_start();
-  include "db_conn.php";
+    session_start();
+    include "db_conn.php";
 
-  $title = "Fitness Hours";
-  include "header.php";
+    $title = "Fitness Hours";
+    include "header.php";
 
-  $sql = "SELECT f.name as facilityName, d.dayName as dayName, d.hours as hours FROM `facility` f, `day` d WHERE f.name = d.facilityName AND f.type = :type ORDER BY f.name, d.dayName;";
-  $parameters = [
-    ":type" => "Fitness"
-  ];
-  $stm = $db->prepare($sql);
-  $stm->execute($parameters);
-  $resultSet = $stm->fetchAll();
+    if (!isset($_SESSION["netID"])) {
+        header("Location: login.php");
+    }
+
+    $sql = "SELECT f.name as facilityName, d.dayName as dayName, d.hours as hours FROM `facility` f, `day` d WHERE f.name = d.facilityName AND f.type = :type ORDER BY f.name, d.dayName;";
+    $parameters = [
+        ":type" => "Fitness"
+    ];
+    $stm = $db->prepare($sql);
+    $stm->execute($parameters);
+    $resultSet = $stm->fetchAll();
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

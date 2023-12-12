@@ -1,7 +1,13 @@
 <?php
 session_start();
-$title = "Tutor";
+
+if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+}
+
 include "db_conn.php";
+
+$title = "Tutor";
 include 'header.php';
 
 if (!$db) {

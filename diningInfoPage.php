@@ -2,6 +2,10 @@
   session_start();
   include "db_conn.php";
 
+  if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+  }
+
   $sql = "SELECT f.name as facilityName, d.dayName as dayName, d.hours as hours FROM `facility` f, `day` d WHERE f.name = d.facilityName AND f.type = :type ORDER BY f.name, d.dayName;";
   $parameters = [
     ":type" => "Dining"

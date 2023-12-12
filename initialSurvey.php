@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["netID"])) {
-    header("Location: welcome.php");
+    header("Location: modules.php");
 }
 
 $title = "Survey";

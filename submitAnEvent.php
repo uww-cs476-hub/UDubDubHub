@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+}
+
 $title = "Event Form";
 include "header.php";
 ?>
