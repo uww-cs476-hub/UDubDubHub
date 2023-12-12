@@ -45,6 +45,10 @@ $modules = [
                     <a href="UWW Interactive map/web/index.html">Interactive Map</a><br>
                     <a href="https://www.uww.edu/adminaffairs/parking-regulations" target="_blank">Parking Information</a><br>
                     <a href="https://www.bird.co/#ride-on" target="_blank">Use Birds to get around Whitewater!</a>'],
+    'Student Directory' => [
+        'visibility' => false,
+        'content' => '<h2>Student Directory</h2>
+                    <a href="https://myapps.uww.edu" target="_blank">Access all UWW Academic Apps here</a>'],
     'Helpful Academic Resources' => [
         'visibility' => false,
         'content' => '<h2>Helpful Academic Resources</h2>
@@ -58,23 +62,24 @@ $modules = [
         'visibility' => false,
         'content' => '<h2>Campus Life Resources</h2>
                     <a href="diningInfoPage.php">Dining Hours</a><br>
-                    <a href="fitnessHours.php">Fitness Hours</a><br>
-                    <a href="https://www.uww.edu/housing/services/laundry" target="_blank">On-Campus Laundry<br>
                     <a href="https://www.uww.edu/uc/dining-services" target="_blank">Dining Services</a><br>
+                    <a href="https://www.uww.edu/housing/services/laundry" target="_blank">On-Campus Laundry<br>
+                    <a href="fitnessHours.php">Fitness Hours</a><br>
                     <a href="https://www.uww.edu/rec-sports" target="_blank">Recreation Sports & Facilities</a>'],
-    'Student Directory' => [
-        'visibility' => false,
-        'content' => '<h2>Student Directory</h2>
-                    <a href="https://myapps.uww.edu" target="_blank">Click here to access all UWW Apps!</a>'],
     'Get Involved' => [
         'visibility' => false,
-        'content' => '<h2>Get Involved at UWW!</h2><a href="submitAnEvent.php">Submit an Event Here!</a><br>
-                        <a href="https://www.uww.edu/documents/Rec%20Sports/Weekly%20Activity%20Schedules/2023-2024/AthleticEventsCalendar%202023-24.pdf" target="_blank">Athletic Events</a>'],
+        'content' => '<h2>Get Involved at UWW!</h2><a href="submitAnEvent.php">Submit your own Whitewater Event!</a><br>
+                        <a href="https://www.uww.edu/uc/get-involved/warhawk-connection-center#events">Warhawk Connection Center</a>
+                        <a href="https://www.uww.edu/documents/Rec%20Sports/Weekly%20Activity%20Schedules/2023-2024/AthleticEventsCalendar%202023-24.pdf" target="_blank">Athletic Events</a><br>
+                        <a href="https://www.uww.edu/a/97816">Join a Club Sport</a><br>
+                        <a href="https://www.uww.edu/rec-sports/intramural-sports">Join an Intramural Sport</a><br>
+                        <a href="https://www.uww.edu/uc/get-involved/greek-community">Greek Life Information</a>'],
     'Need Technical Help?' => [
         'visibility' => false,
         'content' => '<h2>Having Technical Issues?</h2>
                        <a href="https://www.uww.edu/housing/services/technology/resnet" target="_blank">ResNET</a><br>
-                        <a href="https://www.uww.edu/documents/colleges/cobe/2015%20docs/resource%20guide%20fall%202015%2009.11.15.pdf" target="_blank">CoBE Tech Resource Guide</a>'],
+                        <a href="https://www.uww.edu/documents/colleges/cobe/2015%20docs/resource%20guide%20fall%202015%2009.11.15.pdf" target="_blank">CoBE Tech Resource Guide</a><br>
+                        <a href="https://www.uww.edu/its/services">Other Technical Services</a>'],
     'Graduation Resources' => [
         'visibility' => false,
         'content' => '<h2>Graduating Soon?</h2>
