@@ -130,9 +130,53 @@ td {
 }
 body {
     font-family: 'Arial', sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
 }
 
+#menu-btn {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#sidebar {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    background-color: rebeccapurple;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+#sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.25vw;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+#sidebar a:hover {
+    background-color: lightgrey;
+}
+
+#content {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+#sidebar.active {
+    width: 250px;
+}
+
+#content.active {
+    margin-left: 250px;
+}
 /* Planner Styles */
 
 .row {

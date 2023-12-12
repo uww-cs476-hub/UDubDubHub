@@ -9,6 +9,27 @@ if (!isset($_SESSION["netID"])) {
     header("Location: login.php");
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $sql = "DELETE FROM `save` WHERE `netID` = :netID;";
+    $parameters = [
+        ":netID" => $_SESSION["netID"]
+    ];
+    $stm = $db->prepare($sql);
+    $stm->execute($parameters);
+
+    if (isset($_POST["modules"])) {
+        foreach ($_POST["modules"] as $module) {
+            $sql = "INSERT INTO `save` (`moduleName`, `netID`) VALUES (:moduleName, :netID);";
+            $parameters = [
+                ":moduleName" => $module,
+                ":netID" => $_SESSION["netID"]
+            ];
+            $stm = $db->prepare($sql);
+            $stm->execute($parameters);
+        }
+    }
+}
+
 $sql = "SELECT `moduleName` FROM `save` WHERE `netID` = :netID;";
 $parameters = [
     ":netID" => $_SESSION["netID"]
@@ -16,25 +37,6 @@ $parameters = [
 $stm = $db->prepare($sql);
 $stm->execute($parameters);
 $checked = $stm->fetchAll();
-?>
-
-<body>
-<header>
-    <div class="styled-container">
-        <?php
-        echo "<div class='a-modules a' style='float:left'><a href='index.php?mode=logout'>Logout</a></div>";
-        ?>
-        <br>
-        <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
-        <h1><?php echo "Welcome, " . $_SESSION["firstName"] . "!";?></h1>
-        <div class="a-modules a">
-        <a href="planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
-        </div>
-        <input type="text" id="moduleSearch" style="width:25%" placeholder="Search..." oninput="filterModules()">
-    </div>
-</header>
-
-<?php
 
 $modules = [
     'Get to Know Your Way Around Campus' => [
@@ -90,6 +92,51 @@ foreach ($checked as $module) {
 
 ?>
 
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<div id="sidebar">
+    <a href="planner.php">Planner and Notes</a>
+
+    <div class="dropdown">
+        <button class="dropbtn" onclick="toggleVisibility()">Dashboard Settings</button>
+        <div class="dropdown-content" id="moduleVisibility" style="display: none;">
+            <h2>Update Module Visibility</h2>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <?php
+                foreach ($modules as $moduleName => $module) {
+                    $checked = $module['visibility'] ? 'checked' : '';
+                    ?>
+                    <input type="checkbox" name="modules[]" value="<?php echo $moduleName; ?>" <?php echo $checked; ?>>
+                    <label><?php echo $moduleName; ?></label>
+                    <br>
+                    <?php
+                }
+                ?>
+                <br>
+                <button type="submit">Update Visibility</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="logout" onclick="location.href='index.php?mode=logout'">Logout</div>
+</div>
+
+<div id="content">
+    <header>
+        <div class="styled-container">
+            <?php
+            echo "<div id='menu-btn' class='a-modules a'><a href='javascript:void(0)' onclick='toggleSidebar()'>☰ Menu</a></div>";
+            ?>
+            <br>
+            <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
+            <h1><?php echo "Welcome, " . $_SESSION["firstName"] . "!"; ?></h1>
+            <input type="text" id="moduleSearch" style="width:50%" placeholder="Search..." oninput="filterModules()">
+        </div>
+    </header>
+
 <div class="module-container">
     <?php
     // Display modules in the form
@@ -100,6 +147,23 @@ foreach ($checked as $module) {
     }
     ?>
 </div>
+    <div id="moduleVisibility" style="display: none;">
+        <h2>Update Module Visibility</h2>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <?php
+            foreach ($modules as $moduleName => $module) {
+                $checked = $module['visibility'] ? 'checked' : '';
+                ?>
+                <input type="checkbox" name="modules[]" value="<?php echo $moduleName; ?>" <?php echo $checked; ?>>
+                <label><?php echo $moduleName; ?></label>
+                <br>
+                <?php
+            }
+            ?>
+            <br>
+            <button type="submit">Update Visibility</button>
+        </form>
+    </div>
 <script>
     function filterModules() {
         var input, filter, modules, module, links, link, i, j, txtValue;
@@ -128,6 +192,19 @@ foreach ($checked as $module) {
             }
         }
     }
-</script>
 
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
+
+        var content = document.getElementById("content");
+        content.classList.toggle("active");
+    }
+
+    function toggleVisibility() {
+        var moduleVisibility = document.getElementById("moduleVisibility");
+        moduleVisibility.style.display = moduleVisibility.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+</div>
 </body>
