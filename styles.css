@@ -60,6 +60,9 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     margin: 8px 0;
     box-sizing: border-box;
 }
+img{
+    width:25%;
+}
 .module-checkboxes{
     display: flex;
     justify-content: space-between;

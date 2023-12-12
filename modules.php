@@ -26,7 +26,7 @@ $checked = $stm->fetchAll();
         <div class="a-modules a">
         <a href="planner.php">Planner and Notes</a><a href="moduleVisibility.php">Dashboard Settings</a><br>
         </div>
-        <input type="text" id="moduleSearch" style="width:50%" placeholder="Search..." oninput="filterModules()">
+        <input type="text" id="moduleSearch" style="width:25%" placeholder="Search..." oninput="filterModules()">
     </div>
 </header>
 
@@ -38,7 +38,7 @@ $modules = [
         'content' => '<h2>Welcome to Campus!</h2>
                     <a href="UWW Interactive map/web/index.html">Interactive Map</a><br>
                     <a href="https://www.uww.edu/adminaffairs/parking-regulations">Parking Information</a><br>
-                    <a href="https://www.bird.co/#ride-on">Use Birds to Zoom Around Town!</a>'],
+                    <a href="https://www.bird.co/#ride-on">Use Birds to get around Whitewater!</a>'],
     'Helpful Academic Resources' => [
         'visibility' => false,
         'content' => '<h2>Helpful Academic Resources</h2>
@@ -50,7 +50,7 @@ $modules = [
         'visibility' => false,
         'content' => '<h2>Campus Life Resources</h2>
                     <a href="diningInfoPage.php">Dining Halls</a><br>
-                    <a href="diningHallAlerts.php">Submit a Dining Hall Alert</a><br>
+                    <a href="https://www.uww.edu/housing/services/laundry">On Campus Laundry<br>
                     <a href="https://www.uww.edu/rec-sports">Fitness Information</a>'],
     'Student Directory' => [
         'visibility' => false,
@@ -68,11 +68,11 @@ $modules = [
     'Graduation Resources' => [
         'visibility' => false,
         'content' => '<h2>Graduating Soon?</h2>
-                    <a href="https://www.uww.edu/career">Career Services</a><br>'],
+                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'],
     'Career Resources' => [
         'visibility' => false,
         'content' => '<h2>Career Resources</h2>
-                    <a href="https://www.uww.edu/registrar/graduation">Graduation Services</a>'],
+                    <a href="https://www.uww.edu/career">Career Services</a><br>'],
     'Other Resources' => [
         'visibility' => false,
         'content' => '<h2>Other Resources</h2>

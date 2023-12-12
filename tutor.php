@@ -16,7 +16,7 @@ if (!$db) {
     <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
 <h1>Tutoring Service</h1>
 <div class="search-bar-tutor">
-    <input type="text" id="majorSearch" placeholder="Search for a major..." oninput="filterMajors()">
+    <input type="text" id="majorSearch" placeholder="Search for a major..." style="width:25%" oninput="filterMajors()">
 </div>
 </div>
 <div class="tutor-container">
