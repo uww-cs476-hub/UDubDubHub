@@ -98,21 +98,29 @@ foreach ($checked as $module) {
 </div>
 <script>
     function filterModules() {
-        var input, filter,  modules,  module, h2, a, i, txtValue;
+        var input, filter, modules, module, links, link, i, j, txtValue;
         input = document.getElementById("moduleSearch");
         filter = input.value.toUpperCase();
         modules = document.getElementsByClassName("styled-module");
 
-        for (i = 0; i <  modules.length; i++) {
-            module =  modules[i];
-            h2 =  module.getElementsByTagName("h2")[0];
-            a =  module.getElementsByTagName("a")[0];
-            txtValue = h2.textContent|| h2.innerText|| a.textContent || a.innerText;
+        for (i = 0; i < modules.length; i++) {
+            module = modules[i];
+            links = module.getElementsByTagName("a");
+            var moduleMatchesFilter = false;
 
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                 module.style.display = "";
+            for (j = 0; j < links.length; j++) {
+                link = links[j];
+                txtValue = link.textContent || link.innerText;
+
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    moduleMatchesFilter = true;
+                    break;
+                }
+            }
+            if (moduleMatchesFilter) {
+                module.style.display = "";
             } else {
-                 module.style.display = "none";
+                module.style.display = "none";
             }
         }
     }
