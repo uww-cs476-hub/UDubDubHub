@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION["netID"])) {
+    header("Location: login.php");
+}
+
 include "db_conn.php";
 
 $title = "Module Visibility";
