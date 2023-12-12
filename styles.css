@@ -140,6 +140,26 @@ body {
     margin-left: 10px;
 }
 
+.dropbtn {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 1.25vw;
+    display: block;
+    transition: 0.3s;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    text-align: left;
+}
+
+#update-visibility {
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    padding: .75%;
+}
+
 #sidebar {
     position: fixed;
     height: 100%;

@@ -435,7 +435,7 @@ if (isset($_SESSION["netID"])) {
             <tr><td><input type="time" id="time-input" name="time-input"></td></tr>
         </div>
         <div class="event-item">
-            <tr><td><button type="submit" name="add-event">Add Reminder</button></td></tr>
+            <tr><td><button type="submit" name="add-event" style="padding: 2%;">Add Reminder</button></td></tr>
         </div>
     </form>
     </table>

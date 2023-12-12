@@ -92,18 +92,13 @@ foreach ($checked as $module) {
 
 ?>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-<body>
 <div id="sidebar">
     <a href="planner.php">Planner and Notes</a>
 
     <div class="dropdown">
         <button class="dropbtn" onclick="toggleVisibility()">Dashboard Settings</button>
-        <div class="dropdown-content" id="moduleVisibility" style="display: none;">
-            <h2>Update Module Visibility</h2>
+        <div class="dropdown-content" id="moduleVisibility" style="display: none; color: white;">
+            <h4 style="text-align: center;">Update Module Visibility</h4>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <?php
                 foreach ($modules as $moduleName => $module) {
@@ -116,12 +111,12 @@ foreach ($checked as $module) {
                 }
                 ?>
                 <br>
-                <button type="submit">Update Visibility</button>
+                <div style="text-align: center;"><button id="update-visibility" type="submit">Update Visibility</button></div>
             </form>
         </div>
     </div>
 
-    <div id="logout" onclick="location.href='index.php?mode=logout'">Logout</div>
+    <a href="index.php?mode=logout">Logout</a>
 </div>
 
 <div id="content">
