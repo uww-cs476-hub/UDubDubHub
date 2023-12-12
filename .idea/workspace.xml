@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0412a262-56fe-4a61-8a6c-998485cd74df" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules.php" beforeDir="false" afterPath="$PROJECT_DIR$/modules.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UWW Interactive map/web/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/UWW Interactive map/web/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,7 @@
       <workItem from="1701247931616" duration="3679000" />
       <workItem from="1701306976714" duration="642000" />
       <workItem from="1701660417758" duration="3216000" />
-      <workItem from="1702341745123" duration="1060000" />
+      <workItem from="1702341745123" duration="1540000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@ const map = L.map('map', {
 //     maxZoom: 18,
 //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 // }).addTo(map);
-L.tileLayer('http://localhost:63342/UDubDubHub/UWW%20Interactive%20map/web/tiles/{z}/{x}/{y}.png', {
+L.tileLayer('./tiles/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
