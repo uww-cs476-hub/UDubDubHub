@@ -162,8 +162,7 @@
                             'Get Involved',
                             'Need Technical Help?',
                             'Graduation Resources',
-                            'Career Resources',
-                            'Other Resources'
+                            'Career Resources'
                         ];
 
                         break;
@@ -177,8 +176,7 @@
                             'Get Involved',
                             'Need Technical Help?',
                             'Graduation Resources',
-                            'Career Resources',
-                            'Other Resources'
+                            'Career Resources'
                         ];
 
                         break;

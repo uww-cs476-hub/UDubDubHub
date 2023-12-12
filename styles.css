@@ -60,10 +60,10 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=n
     margin: 8px 0;
     box-sizing: border-box;
 }
-img{
+img {
     width:25%;
 }
-.module-checkboxes{
+.module-checkboxes {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -80,7 +80,7 @@ img{
     font-size: 2.5vw;
     margin-bottom: 1%;
 }
-.styled-module{
+.styled-module {
     background-color: rebeccapurple;
     color: white;
     border-radius: 8px;
@@ -90,10 +90,10 @@ img{
     padding: 10px;
     width: 300px;
 }
-.styled-module:hover{
+.styled-module:hover {
     box-shadow: 0 0 15px black;
 }
-.module-container{
+.module-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -279,4 +279,14 @@ body {
 
 h1 {
     text-align: center;
+}
+
+/* Facility Hours Styles */
+
+.cell {
+    display:flex;
+    margin:0;
+    flex-direction:column;
+    border: 1px solid;
+    height: 10%;
 }
