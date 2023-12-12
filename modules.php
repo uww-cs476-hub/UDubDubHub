@@ -43,6 +43,7 @@ $modules = [
         'visibility' => false,
         'content' => '<h2>Welcome to Campus!</h2>
                     <a href="UWW Interactive map/web/index.html">Interactive Map</a><br>
+                    <a href="uniCenterMap.php">University Center Map</a><br>
                     <a href="https://www.uww.edu/adminaffairs/parking-regulations" target="_blank">Parking Information</a><br>
                     <a href="https://www.bird.co/#ride-on" target="_blank">Use Birds to get around Whitewater!</a>'],
     'Student Directory' => [
