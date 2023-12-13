@@ -5,7 +5,18 @@
     $title = "Submitted Events";
     include "header.php";
 
-    $sql = "SELECT `name`, `description`, `location`, `startTime`, `endTime`, `netID` FROM `event`;";
+    if (isset($_POST["decline"])) {
+        $sql = "DELETE FROM `event` WHERE `ID` = :id";
+        $parameters = [
+            "id" => $_POST["decline"]
+        ];
+        $stm = $db->prepare($sql);
+        $stm->execute($parameters);
+
+        header("Location: submittedEvents.php");
+    }
+
+    $sql = "SELECT `ID`, `name`, `description`, `location`, `startTime`, `endTime`, `netID` FROM `event`;";
     $stm = $db->prepare($sql);
     $stm->execute();
     $resultSet = $stm->fetchAll(PDO::FETCH_ASSOC);
@@ -37,6 +48,9 @@
         <tr>
             <?php
             foreach($event as $key => $value) {
+                if ($key == "ID") {
+                    continue;
+                }
             ?>
                 <td class="event-td">
                     <?php
@@ -52,8 +66,10 @@
             }
             ?>
             <td class="event-td">
-                <button style="padding: 2%;">Accept</button>
-                <button style="padding: 2%;">Decline</button>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <button type="submit" name="accept" id="event-admin-accept" value="<?php echo $event["ID"] ?>">Accept</button>
+                    <button type="submit" name="decline" id="event-admin-decline" value="<?php echo $event["ID"] ?>">Decline</button>
+                </form>
             </td>
         </tr>
     <?php

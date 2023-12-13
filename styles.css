@@ -217,9 +217,23 @@ body {
     margin-left: 250px;
 }
 
+#event-admin-accept {
+    padding: 2%; background-color: green;
+}
+#event-admin-decline {
+    padding: 2%; background-color: red;
+}
+#event-admin-accept:hover {
+    background-color: lightgrey;
+}
+#event-admin-decline:hover {
+    background-color: lightgrey;
+}
+
 /* Event Table Styles */
 
 .event-table {
+    table-layout: fixed;
     width: 100%;
 }
 
