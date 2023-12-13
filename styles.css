@@ -216,8 +216,26 @@ body {
 #content.active {
     margin-left: 250px;
 }
-/* Planner Styles */
 
+/* Event Table Styles */
+
+.event-table {
+    width: 100%;
+}
+
+.event-th {
+    border: 1px solid;
+    color: black;
+}
+
+.event-td {
+    border: 1px solid;
+    color: black;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Planner Styles */
 .row {
     display: flex;
 }

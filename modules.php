@@ -102,7 +102,7 @@ foreach ($checked as $module) {
     <a href="planner.php">Planner and Notes</a>
 
     <div class="dropdown">
-        <button class="dropbtn" onclick="toggleVisibility()">Dashboard Settings</button>
+        <button class="dropbtn" onclick="toggleVisibility('moduleVisibility')">Dashboard Settings</button>
         <div class="dropdown-content" id="moduleVisibility" style="display: none; color: white;">
             <h4 style="text-align: center;">Update Module Visibility</h4>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -121,6 +121,19 @@ foreach ($checked as $module) {
             </form>
         </div>
     </div>
+    
+    <?php
+    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+    ?>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleVisibility('adminSettings')">Admin Settings</button>
+            <div class="dropdown-content" id="adminSettings" style="display: none; color: white;">
+                <a href="submittedEvents.php" style="font-size: 0.95vw; margin-left: 15px;">Submitted Events</a>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
 
     <a href="index.php?mode=logout">Logout</a>
 </div>
@@ -132,7 +145,7 @@ foreach ($checked as $module) {
             echo "<div id='menu-btn' class='a-modules a'><a href='javascript:void(0)' onclick='toggleSidebar()'>☰ Menu</a></div>";
             ?>
             <br>
-            <img src="Whitewater Logos/UW-Whitewater_logo_blk_lead_hortizontal.png" style="width:25%">
+            <img src="Whitewater Logos/UW-Whitewater_logo_wht_lead_hortizontal.png" style="width:25%">
             <h1><?php echo "Welcome, " . $_SESSION["firstName"] . "!"; ?></h1>
             <input type="text" id="moduleSearch" style="width:50%" placeholder="Search..." oninput="filterModules()">
         </div>
@@ -202,8 +215,8 @@ foreach ($checked as $module) {
         content.classList.toggle("active");
     }
 
-    function toggleVisibility() {
-        var moduleVisibility = document.getElementById("moduleVisibility");
+    function toggleVisibility(id) {
+        var moduleVisibility = document.getElementById(id);
         moduleVisibility.style.display = moduleVisibility.style.display === 'none' ? 'block' : 'none';
     }
 </script>

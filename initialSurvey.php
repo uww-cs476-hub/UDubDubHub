@@ -125,6 +125,7 @@ if (!$db) {
     </table>
     <input type="submit" value="Submit">
 </form>
+<br>
 <?php
 include "footer.html";
 ?>

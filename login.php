@@ -50,7 +50,7 @@ if (isset($_SESSION['login_error'])) {
         </tr>
         <tr>
             <td>
-                <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a>.</p>
+                <p>Don't have an account? <a class="a-CreateOneLogin" href="initialsurvey.php">Create one</a></p>
             </td>
         </tr>
     </table>

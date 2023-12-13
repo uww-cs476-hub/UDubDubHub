@@ -29,14 +29,15 @@
             $eventLocation = $_POST["eventLocation"];
             $description = $_POST["description"];
 
-            $sql = "INSERT INTO `event` (`name`, `startTime`, `endTime`, `location`, `description`)
-                    VALUES (:eventName, :startTime, :endTime, :location, :description);";
+            $sql = "INSERT INTO `event` (`name`, `startTime`, `endTime`, `location`, `description`, `netID`)
+                    VALUES (:eventName, :startTime, :endTime, :location, :description, :netID);";
             $parameters = [
                 ":eventName" => $eventName,
                 ":startTime" => $startTime,
                 ":endTime" => $endTime,
                 ":location" => $eventLocation,
-                ":description" => $description
+                ":description" => $description,
+                ":netID" => $_SESSION["netID"]
             ];
 
             $stm = $db->prepare($sql);
@@ -50,7 +51,7 @@
             $netID = (isset($_POST["netID"])) ? $_POST["netID"] : "-1";
             $password = (isset($_POST["password"])) ? $_POST["password"] : "-1";
             
-            $sql = "SELECT `netID`, `firstName` FROM `user` WHERE `netID` = :netID AND `password` = :password;";
+            $sql = "SELECT `netID`, `firstName`, `isAdmin` FROM `user` WHERE `netID` = :netID AND `password` = :password;";
             $parameters = [
                 ":netID" => $netID,
                 ":password" => hash('sha256', $password)
@@ -63,6 +64,7 @@
             if (isset($result['netID'])) {
                 $_SESSION['netID'] = $netID;
                 $_SESSION['firstName'] = $result['firstName'];
+                $_SESSION['isAdmin'] = $result['isAdmin'];
                 header("Location: modules.php");
             } else {
                 $_SESSION['login_error'] = "Incorrect username or password!";
@@ -95,8 +97,8 @@
                 header("Location: initialsurvey.php");
             }
             else {
-                $sql = "INSERT INTO user (netID, firstName, lastName, password, standing, enrollmentType, email)
-                        VALUES (:netID, :firstName, :lastName, :password, :standing, :enrollmentType, :email);";
+                $sql = "INSERT INTO user (netID, firstName, lastName, password, standing, enrollmentType, email, isAdmin)
+                        VALUES (:netID, :firstName, :lastName, :password, :standing, :enrollmentType, :email, :isAdmin);";
                 $parameters = [
                     ":netID" => $netID,
                     ":firstName" => $firstName,
@@ -104,7 +106,8 @@
                     ":password" => hash('sha256', $password),
                     ":standing" => $standing,
                     ":enrollmentType" => $enrollmentType,
-                    ":email" => $email
+                    ":email" => $email,
+                    ":isAdmin" => false
                 ];
                 $stm = $db->prepare($sql);
                 $stm->execute($parameters);
