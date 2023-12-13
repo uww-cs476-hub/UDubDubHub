@@ -69,18 +69,19 @@ $modules = [
                     <a href="https://www.uww.edu/rec-sports" target="_blank">Recreation Sports & Facilities</a>'],
     'Get Involved' => [
         'visibility' => false,
-        'content' => '<h2>Get Involved at UWW!</h2><a href="submitAnEvent.php">Submit your own Whitewater Event!</a><br>
-                        <a href="https://www.uww.edu/uc/get-involved/warhawk-connection-center#events">Warhawk Connection Center</a>
+        'content' => '<h2>Get Involved at UWW!</h2>
+                        <a href="submitAnEvent.php">Submit your own Whitewater Event!</a><br>
+                        <a href="https://www.uww.edu/uc/get-involved/warhawk-connection-center#events" target="_blank">Warhawk Connection Center</a>
                         <a href="https://www.uww.edu/documents/Rec%20Sports/Weekly%20Activity%20Schedules/2023-2024/AthleticEventsCalendar%202023-24.pdf" target="_blank">Athletic Events</a><br>
-                        <a href="https://www.uww.edu/a/97816">Join a Club Sport</a><br>
-                        <a href="https://www.uww.edu/rec-sports/intramural-sports">Join an Intramural Sport</a><br>
-                        <a href="https://www.uww.edu/uc/get-involved/greek-community">Greek Life Information</a>'],
+                        <a href="https://www.uww.edu/a/97816" target="_blank">Join a Club Sport</a><br>
+                        <a href="https://www.uww.edu/rec-sports/intramural-sports" target="_blank">Join an Intramural Sport</a><br>
+                        <a href="https://www.uww.edu/uc/get-involved/greek-community" target="_blank">Greek Life Information</a>'],
     'Need Technical Help?' => [
         'visibility' => false,
         'content' => '<h2>Having Technical Issues?</h2>
                        <a href="https://www.uww.edu/housing/services/technology/resnet" target="_blank">ResNET</a><br>
                         <a href="https://www.uww.edu/documents/colleges/cobe/2015%20docs/resource%20guide%20fall%202015%2009.11.15.pdf" target="_blank">CoBE Tech Resource Guide</a><br>
-                        <a href="https://www.uww.edu/its/services">Other Technical Services</a>'],
+                        <a href="https://www.uww.edu/its/services" target="_blank">Other Technical Services</a>'],
     'Graduation Resources' => [
         'visibility' => false,
         'content' => '<h2>Graduating Soon?</h2>
