@@ -1,6 +1,9 @@
 <?php
     session_start();
-    if (isset($_SESSION["isAdmin"]) && !$_SESSION["isAdmin"]) {
+    if (!isset($_SESSION["isAdmin"])) {
+        header("Location: modules.php");
+    }
+    if (!$_SESSION["isAdmin"]) {
         header("Location: modules.php");
     }
 
