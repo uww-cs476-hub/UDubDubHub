@@ -140,7 +140,6 @@
                             'Get to Know Your Way Around Campus',
                             'Helpful Academic Resources',
                             'Campus Life Resources',
-                            'Other Resources',
                             'Student Directory',
                             'Get Involved',
                             'Need Technical Help?'
