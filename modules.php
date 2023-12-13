@@ -28,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stm->execute($parameters);
         }
     }
+
+    header("Location: modules.php");
 }
 
 $sql = "SELECT `moduleName` FROM `save` WHERE `netID` = :netID;";
